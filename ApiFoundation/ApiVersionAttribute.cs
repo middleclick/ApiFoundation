@@ -1,8 +1,8 @@
 using System;
 
-namespace ApiTest
+namespace ApiFoundation
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ApiVersionAttribute : Attribute
     {
         internal ApiVersionAttribute(string introductionDate) => IntroductionDate = introductionDate;
