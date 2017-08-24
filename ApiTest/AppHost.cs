@@ -22,11 +22,12 @@ namespace ApiTest
             JsConfig.EmitCamelCaseNames = true;
 
             Plugins.RemoveAll(x => x is CsvFormat);
-            Plugins.RemoveAll(x => x is HtmlFormat);
+            //Plugins.RemoveAll(x => x is HtmlFormat);
             Plugins.RemoveAll(x => x is MarkdownFormat);
             Plugins.Add(new OpenApiFeature {
-                ApiDeclarationFilter = api => api.FixSwaggerDocVersions(),
-                UseCamelCaseSchemaPropertyNames = true
+                ApiDeclarationFilter = api => api.FixSwaggerVersionPath(),
+                UseCamelCaseSchemaPropertyNames = true,
+                OperationFilter = (s, api) => api.AddVersionInfo(),
             });
 
             container.Register<ICacheClient>(new MemoryCacheClient());

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using ServiceStack;
 using ServiceStack.Api.OpenApi.Specification;
 
@@ -13,14 +14,14 @@ namespace ApiTest
         // version, and then removing the version from all of the paths and
         // function doc categories.
         //
-        internal static OpenApiDeclaration FixSwaggerDocVersions(this OpenApiDeclaration api)
+        internal static OpenApiDeclaration FixSwaggerVersionPath(this OpenApiDeclaration api)
         {
             api.BasePath = "/v1";
             var allItems = api.Paths.ToArray();
             api.Paths.Clear();
             foreach (var item in allItems)
             {
-                var path = item.Key.StartsWith("/v1/") ? item.Key.Substring(4) : item.Key;
+                var path = item.Key.StartsWith("/v1/") ? item.Key.Substring(3) : item.Key;
                 var op = item.Value;
                 var tags = path.Split(new char[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
                 if (tags.Length > 0)
@@ -44,6 +45,17 @@ namespace ApiTest
                 }
                 api.Paths.Add(path, op);
             }
+            return api;
+        }
+
+        internal static OpenApiOperation AddVersionInfo(this OpenApiOperation api)
+        {
+            var obj = Type.GetType(api.RequestType);
+            var ver = obj?.GetType().GetCustomAttributes(typeof(ApiVersionAttribute), true)
+                         ?.OfType<ApiVersionAttribute>()
+                         .FirstOrDefault();
+            if (ver != null)
+                api.Description += "\n\nAvailable since: " + ver.IntroductionDate;
             return api;
         }
     }
