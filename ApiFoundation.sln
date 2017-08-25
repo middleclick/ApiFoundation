@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFoundation", "ApiFoundat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFoundation.Shared", "ApiFoundation.Shared\ApiFoundation.Shared.csproj", "{CAF68DE7-A09B-4B10-B929-92EE4A33AB12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.Api", "HelloWorld.Api\HelloWorld.Api.csproj", "{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{CAF68DE7-A09B-4B10-B929-92EE4A33AB12}.Release|x64.Build.0 = Release|x64
 		{CAF68DE7-A09B-4B10-B929-92EE4A33AB12}.Release|x86.ActiveCfg = Release|x86
 		{CAF68DE7-A09B-4B10-B929-92EE4A33AB12}.Release|x86.Build.0 = Release|x86
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Debug|x64.ActiveCfg = Debug|x64
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Debug|x64.Build.0 = Debug|x64
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Debug|x86.ActiveCfg = Debug|x86
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Debug|x86.Build.0 = Debug|x86
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Release|x64.ActiveCfg = Release|x64
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Release|x64.Build.0 = Release|x64
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Release|x86.ActiveCfg = Release|x86
+		{CE502B02-C882-41FE-A5B7-C0CFA8E0934E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal

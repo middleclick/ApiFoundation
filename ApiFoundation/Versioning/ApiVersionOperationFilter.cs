@@ -1,4 +1,5 @@
 using System.Linq;
+using ApiFoundation.Shared;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 

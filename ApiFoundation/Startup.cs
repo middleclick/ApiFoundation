@@ -1,4 +1,5 @@
-﻿using ApiFoundation.ResourceLinking;
+﻿using System.Reflection;
+using ApiFoundation.ResourceLinking;
 using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,8 @@ namespace ApiFoundation
                     opt.UseCentralRoutePrefix(new RouteAttribute("v1/{customer}"));
                     opt.Filters.Add(new ProducesAttribute("application/json"));
                     opt.Filters.Add<LinkFilter>();
-                });
+                })
+                .AddApplicationPart(Assembly.LoadFile(@"/Users/tomkludy/Projects/ApiFoundation/HelloWorld.Api/bin/Debug/netcoreapp2.0/HelloWorld.Api.dll"));
 
             services.AddSwaggerGen(c =>
                 {

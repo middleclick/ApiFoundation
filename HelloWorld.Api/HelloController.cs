@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ApiFoundation.Shared;
 using ApiFoundation.Shared.Models;
-using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 
