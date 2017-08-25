@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using ApiFoundation.ResourceLinking;
 using Newtonsoft.Json;
 
-namespace ApiFoundation.Models
+namespace ApiFoundation.Shared.Models
 {
     public class CollectionBase<T> : LinkedResponse
     {

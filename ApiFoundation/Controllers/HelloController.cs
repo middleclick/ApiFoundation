@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ApiFoundation.ResourceLinking;
+using ApiFoundation.Shared.Models;
 using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;

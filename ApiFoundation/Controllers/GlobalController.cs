@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ApiFoundation.Models;
-using ApiFoundation.ResourceLinking;
+﻿using System.Collections.Generic;
+using ApiFoundation.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiFoundation.Controllers
@@ -24,7 +20,7 @@ namespace ApiFoundation.Controllers
         public LinkedResponse GetTopLevel(string customer)
         {
             // TODO should make sure the caller has access to the called customer.
-            
+
             // The only thing needed here is the links.  There isn't any other data to return.
             return new LinkedResponse();
         }
