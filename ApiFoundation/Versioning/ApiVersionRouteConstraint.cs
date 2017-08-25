@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Primitives;
 
-namespace ApiFoundation
+namespace ApiFoundation.Versioning
 {
     public class ApiVersionRouteConstraint : IRouteConstraint
     {
@@ -27,6 +27,11 @@ namespace ApiFoundation
             RouteValueDictionary values,
             RouteDirection routeDirection)
         {
+            return DoesRequestVersionMatch(httpContext, MaxDateVersion);
+        }
+
+        public static bool DoesRequestVersionMatch(HttpContext httpContext, DateTime maxDateVersion)
+        {
             StringValues apiVersion;
 
             // If the caller didn't request any version specifically, then don't match
@@ -42,7 +47,7 @@ namespace ApiFoundation
             if (!DateTime.TryParseExact(apiVersion[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                 throw new Exception("Bad version header");
             
-            return date < MaxDateVersion;
+            return date < maxDateVersion;
         }
     }
 }

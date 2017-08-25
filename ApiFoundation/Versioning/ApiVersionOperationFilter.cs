@@ -2,7 +2,7 @@ using System.Linq;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace ApiFoundation
+namespace ApiFoundation.Versioning
 {
     public class ApiVersionOperationFilter : IOperationFilter
     {

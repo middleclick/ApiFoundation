@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiFoundation.ResourceLinking;
+using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace ApiFoundation.Controllers
 {
@@ -10,6 +13,13 @@ namespace ApiFoundation.Controllers
     [ApiVersion("2017-08-01")]
     public class HelloController : Controller
     {
+        private readonly IDistributedCache _cache;
+
+        public HelloController(IDistributedCache cache)
+        {
+            _cache = cache;
+        }
+
         // GET /v1/{customer}/hello
         [HttpGet]
         public HelloResult Get()
@@ -31,9 +41,14 @@ namespace ApiFoundation.Controllers
         // This API was introduced on 2017-09-01; notice it has a different return type than the previous version.
         [HttpGet("{id}")]
         [ApiVersion("2017-09-01")]
-        public HelloResult Get2(string id)
+        public async Task<HelloResult> Get2(string id)
         {
-            return new HelloResult { Response = "Hello " + id };
+            var cached = await _cache.GetStringAsync(id);
+            if (cached != null)
+                return new HelloResult { Response = $"Hello {id}, I first saw you at {cached}" };
+            
+            await _cache.SetStringAsync(id, DateTime.Now.ToShortTimeString());
+            return new HelloResult { Response = $"Hello {id}, nice to meet you" };            
         }
     }
 

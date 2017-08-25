@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ApiFoundation
+namespace ApiFoundation.ResourceLinking
 {
-    public abstract class LinkedResponse
+    public class LinkedResponse
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "_links")]
         public virtual IList<Link> Links { get; set; }

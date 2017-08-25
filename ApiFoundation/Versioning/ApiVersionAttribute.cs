@@ -1,6 +1,6 @@
 using System;
 
-namespace ApiFoundation
+namespace ApiFoundation.Versioning
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ApiVersionAttribute : Attribute
