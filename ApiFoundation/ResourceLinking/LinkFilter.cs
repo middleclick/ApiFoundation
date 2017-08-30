@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using ApiFoundation.Shared.Models;
 using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ApiFoundation.ResourceLinking
 {
@@ -59,7 +62,7 @@ namespace ApiFoundation.ResourceLinking
                                 Method = GetMethod(x),
                             })
                             .ToList();
-                        
+
                         // Map from a route, to all related routes
                         foreach (var route in routes)
                         {
@@ -112,6 +115,7 @@ namespace ApiFoundation.ResourceLinking
         private static Lazy<IDictionary<string, IList<Link>>> _routeDict;
 
         private static Regex _maxVersionRex = new Regex(@":maxversion\((\d\d\d\d-\d\d-\d\d)\)", RegexOptions.Compiled);
+        private static Regex _parameterized = new Regex(@"\{([^\}]+)\}", RegexOptions.Compiled);
 
         public void OnResultExecuted(ResultExecutedContext context)
         {
@@ -127,6 +131,15 @@ namespace ApiFoundation.ResourceLinking
             var obj = objectResult.Value as LinkedResponse;
             if (obj == null)
                 return;
+
+            var coll = obj as ILinkedCollectionBase<LinkedResponse>;
+            if (coll != null)
+            {
+                foreach (var item in coll.GetItems())
+                {
+                    item.Links = item.Links ?? new List<Link>();
+                }
+            }
             
             obj.Links = obj.Links ?? new List<Link>();
 
@@ -145,6 +158,8 @@ namespace ApiFoundation.ResourceLinking
             if (!_routeDict.Value.TryGetValue(thisRoute, out routes))
                 return;
 
+            var relatedRoutes = new List<Link>();
+
             // Fill in related route information
             foreach (var route in routes)
             {
@@ -155,9 +170,29 @@ namespace ApiFoundation.ResourceLinking
                 // If the service gave us information for a route, leave it untouched.
                 if (obj.Links.Any(l => l.Name == route.Name))
                     continue;
+
+                var newLink = route.Duplicate();
+
+                // If the object is a collection, and the link is parameterized in
+                // the last portion, add the link to all of the children, and skip
+                // the link at the collection level.  This isn't perfect; it is
+                // possible that a link might be "v1/{customer}/widget/{customer}"
+                // for example; i.e. the last portion of the link may be
+                // parameterized on a value that isn't part of the object.  But it
+                // is probably the 99% case.
+                if (coll != null)
+                {
+                    var splitAt = route.Href.LastIndexOf('/') + 1;
+                    var lastPart = route.Href.Substring(splitAt);
+                    if (_parameterized.IsMatch(lastPart))
+                    {
+                        foreach (var item in coll.GetItems())
+                            item.Links.Add(newLink.Duplicate());
+                        continue;
+                    }
+                }
                 
                 // If a link has a maxversion, see if the caller has access to it; skip otherwise
-                var newLink = new Link {Name = route.Name, Href = route.Href, Method = route.Method};
                 var match = _maxVersionRex.Match(route.Href);
                 if (match.Success)
                 {
@@ -170,20 +205,78 @@ namespace ApiFoundation.ResourceLinking
                         continue;
 
                     // cut the maxversion out
-                    newLink.Href = route.Href.Substring(0, match.Captures[0].Index) + route.Href.Substring(match.Captures[0].Index + match.Captures[0].Length);
+                    newLink.Href = MatchReplace(route.Href, match, "");
                 }
 
                 obj.Links.Add(newLink);
             }
 
+            var actual = context.HttpContext.Request.Path.ToString().TrimStart('/');
+            FixLinks(obj, thisRoute, actual, null);
+            if (coll != null)
+            {
+                PropertyInfo[] properties = null;
+                foreach (var item in coll.GetItems())
+                {
+                    // Assumption is that every item in the collection is of the same type as the first one.
+                    properties = properties ?? item.GetType().GetProperties();
+                    FixLinks(item, thisRoute, actual, properties);
+                }
+            }
+        }
+
+        private void FixLinks(LinkedResponse obj, string template, string actual, PropertyInfo[] propertyInfo)
+        {
             // Normalize the links to provide accurate links to the caller
             obj.Links = obj.Links
                 // Remove routes that don't have an Href, because those are inaccessible.
                 .Where(l => l.Href != null)
                 // Remove duplicates; for those, the first item is the only one accessible.
                 .GroupBy(l => l.Href).Select(g => g.First())
+                // Remove any links that the caller does not have access to.
+                .Where(l => CallerHasAccess(l.Href))
+                // Replace parameters
+                .Select(l => ReplaceParameters(l, obj, template, actual, propertyInfo))
                 // Convert back into a list
                 .ToList();
+        }
+
+        private bool CallerHasAccess(string href)
+        {
+            // TBD.  Most likely this will require a callback per-plugin.  The callback should
+            // be passed in the route's implementing method info and the parameters to be
+            // filled in when the route is called.  The callback should be done once for the
+            // batch of all links, allowing the callee to optimize whatever access control
+            // checks they need to perform.
+            return true;
+        }
+
+        private Link ReplaceParameters(Link l, LinkedResponse obj, string template, string actual, PropertyInfo[] propertyInfo)
+        {
+            l.Href = l.Href.Replace(template, actual);
+
+            var match = _parameterized.Match(l.Href);
+            if (match.Success)
+            {
+                var parm = match.Groups[1].Value;
+                if (parm != null)
+                {
+                    var prop = propertyInfo?.FirstOrDefault(pi => StringComparer.OrdinalIgnoreCase.Equals(pi.Name, parm));
+                    var val = prop?.GetValue(obj)?.ToString();
+                    if (val != null)
+                    {
+                        l.Href = MatchReplace(l.Href, match, val);
+                    }
+                }
+            }
+
+            return l;
+        }
+
+        private string MatchReplace(string str, Match match, string replace)
+        {
+            var capture = match.Captures[0];
+            return str.Substring(0, capture.Index) + replace + str.Substring(capture.Index + capture.Length);
         }
     }
 }

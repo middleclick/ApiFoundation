@@ -11,6 +11,17 @@ namespace ApiFoundation.Shared.Models
 
     public class Link
     {
+        public Link() {}
+        public Link Duplicate()
+        {
+            return new Link
+                {
+                    Name = Name,
+                    Href = Href,
+                    Method = Method,
+                };
+        }
+
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]

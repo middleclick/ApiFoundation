@@ -9,10 +9,14 @@ namespace ApiFoundation.Controllers
     {
         // GET /v1
         [HttpGet]
-        public CollectionBase<string> Get()
+        public LinkedCollectionBase<GetCustomersResponse> Get()
         {
             // TODO This is hard coded but should be looking at the access control rules for the caller's bearer token
-            return new CollectionBase<string> { Items = new List<string> { "root", "acme" } };
+            return new LinkedCollectionBase<GetCustomersResponse>
+                { Items = new List<GetCustomersResponse> {
+                    new GetCustomersResponse { Customer = "root" },
+                    new GetCustomersResponse { Customer = "acme" },
+                } };
         }
 
         // GET /v1/{customer}
@@ -24,5 +28,10 @@ namespace ApiFoundation.Controllers
             // The only thing needed here is the links.  There isn't any other data to return.
             return new LinkedResponse();
         }
+    }
+
+    public class GetCustomersResponse : LinkedResponse
+    {
+        public string Customer { get; set; }
     }
 }
