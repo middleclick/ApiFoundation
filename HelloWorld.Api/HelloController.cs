@@ -37,16 +37,16 @@ namespace ApiFoundation.Controllers
 
         // GET /v1/{customer}/values/5
         // This API was introduced on 2017-09-01; notice it has a different return type than the previous version.
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "Hello_Get_id")]
         [ApiVersion("2017-09-01")]
-        public async Task<HelloResult> Get2(string id)
+        public async Task<HelloResult> Get2(string id, string customer)
         {
             var cached = await _cache.GetStringAsync(id);
             if (cached != null)
-                return new HelloResult { Response = $"Hello {id}, I first saw you at {cached}" };
+                return new HelloResult { Response = $"Hello {id} from {customer}, I first saw you at {cached}" };
             
             await _cache.SetStringAsync(id, DateTime.Now.ToShortTimeString());
-            return new HelloResult { Response = $"Hello {id}, nice to meet you" };            
+            return new HelloResult { Response = $"Hello {id} from {customer}, nice to meet you" };            
         }
     }
 

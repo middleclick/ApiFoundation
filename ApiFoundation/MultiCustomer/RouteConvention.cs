@@ -7,11 +7,9 @@ namespace ApiFoundation
     public class RouteConvention : IApplicationModelConvention
     {
         private readonly AttributeRouteModel _centralPrefix;
-    
-        public RouteConvention(IRouteTemplateProvider routeTemplateProvider)
-        {
+
+        public RouteConvention(IRouteTemplateProvider routeTemplateProvider) =>
             _centralPrefix = new AttributeRouteModel(routeTemplateProvider);
-        }
 
         public void Apply(ApplicationModel application)
         {

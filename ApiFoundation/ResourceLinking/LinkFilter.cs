@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using ApiFoundation.Shared.Models;
 using ApiFoundation.Versioning;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -51,39 +52,28 @@ namespace ApiFoundation.ResourceLinking
             // instead of just once on startup.
             if (_routeDict == null)
             {
-                _routeDict = new Lazy<IDictionary<string, IList<Link>>>(
+                _routeDict = new Lazy<IDictionary<string, IList<LinkWithMetadata>>>(
                     () => {
-                        var routeDict = new Dictionary<string, IList<Link>>();
+                        var routeDict = new Dictionary<string, IList<LinkWithMetadata>>();
                         var routes = provider.ActionDescriptors.Items
                             .Where(r => !string.IsNullOrEmpty(r.AttributeRouteInfo?.Template))
                             .Select(x => new Link {
-                                Name = GetName(x),
+                                Name = GetRouteName(x),
                                 Href = x.AttributeRouteInfo.Template,
-                                Method = GetMethod(x),
+                                Method = GetRouteMethod(x),
                             })
                             .ToList();
 
                         // Map from a route, to all related routes
                         foreach (var route in routes)
                         {
-                            IList<Link> segRoutes;
-                            if (!routeDict.TryGetValue(route.Href, out segRoutes))
-                            {
-                                segRoutes = new List<Link>();
-                                routeDict.Add(route.Href, segRoutes);
-                            }
-                            segRoutes.Add(route);
-
+                            AddRouteLink(routeDict, route.Href, route);
+                            
                             var lastSep = route.Href.LastIndexOf('/');
                             if (lastSep > 0)
                             {
                                 var parent = route.Href.Substring(0, lastSep);
-                                if (!routeDict.TryGetValue(parent, out segRoutes))
-                                {
-                                    segRoutes = new List<Link>();
-                                    routeDict.Add(parent, segRoutes);
-                                }
-                                segRoutes.Add(route);
+                                AddRouteLink(routeDict, parent, route);
                             }
                         }
                         return routeDict;
@@ -92,7 +82,18 @@ namespace ApiFoundation.ResourceLinking
             }
         }
 
-        private static string GetName(ActionDescriptor ad)
+        private static void AddRouteLink(Dictionary<string, IList<LinkWithMetadata>> routeDict, string route, Link link)
+        {
+            IList<LinkWithMetadata> segRoutes;
+            if (!routeDict.TryGetValue(route, out segRoutes))
+            {
+                segRoutes = new List<LinkWithMetadata>();
+                routeDict.Add(route, segRoutes);
+            }
+            segRoutes.Add(new LinkWithMetadata { Link = link });
+        }
+
+        private static string GetRouteName(ActionDescriptor ad)
         {
             if (!string.IsNullOrEmpty(ad.AttributeRouteInfo.Name))
                 return ad.AttributeRouteInfo.Name;
@@ -106,32 +107,28 @@ namespace ApiFoundation.ResourceLinking
             return name;
         }
 
-        private static string GetMethod(ActionDescriptor ad)
+        private static string GetRouteMethod(ActionDescriptor ad)
         {
             var result = ad.ActionConstraints?.OfType<HttpMethodActionConstraint>().FirstOrDefault()?.HttpMethods.FirstOrDefault();
             return result == "GET" ? null : result;
         }
 
-        private static Lazy<IDictionary<string, IList<Link>>> _routeDict;
+        private static Lazy<IDictionary<string, IList<LinkWithMetadata>>> _routeDict;
 
-        private static Regex _maxVersionRex = new Regex(@":maxversion\((\d\d\d\d-\d\d-\d\d)\)", RegexOptions.Compiled);
         private static Regex _parameterized = new Regex(@"\{([^\}]+)\}", RegexOptions.Compiled);
-
-        public void OnResultExecuted(ResultExecutedContext context)
-        {
-            // Can't do much here.
-        }
 
         public void OnResultExecuting(ResultExecutingContext context)
         {
             var objectResult = context.Result as ObjectResult;
             if (objectResult == null)
                 return;
-            
+
             var obj = objectResult.Value as LinkedResponse;
             if (obj == null)
                 return;
 
+            // Make sure all of the link collections are initialized
+            obj.Links = obj.Links ?? new List<Link>();
             var coll = obj as ILinkedCollectionBase<LinkedResponse>;
             if (coll != null)
             {
@@ -140,38 +137,34 @@ namespace ApiFoundation.ResourceLinking
                     item.Links = item.Links ?? new List<Link>();
                 }
             }
-            
-            obj.Links = obj.Links ?? new List<Link>();
 
-            // Get this route's info
+            // Get the currently executing route's info
             var ad = context.ActionDescriptor;
             if (ad == null)
                 return;
-            var thisRoute = ad.AttributeRouteInfo?.Template;
-            if (thisRoute == null)
+            var thisRouteHref = ad.AttributeRouteInfo?.Template;
+            if (thisRouteHref == null)
                 return;
-            var thisName = GetName(ad);
-            var thisMethod = GetMethod(ad);
+            var thisRouteName = GetRouteName(ad);
+            var thisRouteMethod = GetRouteMethod(ad);
 
             // Get all related routes
-            IList<Link> routes;
-            if (!_routeDict.Value.TryGetValue(thisRoute, out routes))
+            IList<LinkWithMetadata> routes;
+            if (!_routeDict.Value.TryGetValue(thisRouteHref, out routes))
                 return;
-
-            var relatedRoutes = new List<Link>();
 
             // Fill in related route information
             foreach (var route in routes)
             {
+                var routeLink = route.Link;
+
                 // We don't bother with "self" links.  They seem to be useless.
-                if (route.Name == thisName)
+                if (routeLink.Name == thisRouteName)
                     continue;
 
                 // If the service gave us information for a route, leave it untouched.
-                if (obj.Links.Any(l => l.Name == route.Name))
+                if (obj.Links.Any(l => l.Name == routeLink.Name))
                     continue;
-
-                var newLink = route.Duplicate();
 
                 // If the object is a collection, and the link is parameterized in
                 // the last portion, add the link to all of the children, and skip
@@ -182,37 +175,31 @@ namespace ApiFoundation.ResourceLinking
                 // is probably the 99% case.
                 if (coll != null)
                 {
-                    var splitAt = route.Href.LastIndexOf('/') + 1;
-                    var lastPart = route.Href.Substring(splitAt);
+                    var splitAt = routeLink.Href.LastIndexOf('/') + 1;
+                    var lastPart = routeLink.Href.Substring(splitAt);
                     if (_parameterized.IsMatch(lastPart))
                     {
                         foreach (var item in coll.GetItems())
-                            item.Links.Add(newLink.Duplicate());
+                        {
+                            //AddLinkIfAvailableToCaller(item.Links, route.Duplicate());
+                            item.Links.Add(routeLink.Duplicate());
+                        }
                         continue;
                     }
                 }
                 
+                // We manipulate the link and don't want to alter the route table we saved.
+                var newLink = routeLink.Duplicate();
+
                 // If a link has a maxversion, see if the caller has access to it; skip otherwise
-                var match = _maxVersionRex.Match(route.Href);
-                if (match.Success)
-                {
-                    var maxVersion = match.Groups[1].Value;
-                    DateTime date;
-                    if (!DateTime.TryParseExact(maxVersion, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
-                        throw new ArgumentException("Invalid version format", nameof(maxVersion));
-
-                    if (!ApiVersionRouteConstraint.DoesRequestVersionMatch(context.HttpContext, date))
-                        continue;
-
-                    // cut the maxversion out
-                    newLink.Href = MatchReplace(route.Href, match, "");
-                }
+                if (!ApiVersionLinkFilter.CheckLink(newLink, context.HttpContext))
+                    continue;
 
                 obj.Links.Add(newLink);
             }
 
             var actual = context.HttpContext.Request.Path.ToString().TrimStart('/');
-            FixLinks(obj, thisRoute, actual, null);
+            FixLinks(obj, thisRouteHref, actual, null);
             if (coll != null)
             {
                 PropertyInfo[] properties = null;
@@ -220,10 +207,16 @@ namespace ApiFoundation.ResourceLinking
                 {
                     // Assumption is that every item in the collection is of the same type as the first one.
                     properties = properties ?? item.GetType().GetProperties();
-                    FixLinks(item, thisRoute, actual, properties);
+                    FixLinks(item, thisRouteHref, actual, properties);
                 }
             }
         }
+
+        public void OnResultExecuted(ResultExecutedContext context)
+        {
+            // Can't do much here.
+        }
+
 
         private void FixLinks(LinkedResponse obj, string template, string actual, PropertyInfo[] propertyInfo)
         {
@@ -255,17 +248,20 @@ namespace ApiFoundation.ResourceLinking
         {
             l.Href = l.Href.Replace(template, actual);
 
-            var match = _parameterized.Match(l.Href);
-            if (match.Success)
+            if (propertyInfo != null)
             {
-                var parm = match.Groups[1].Value;
-                if (parm != null)
+                var match = _parameterized.Match(l.Href);
+                if (match.Success)
                 {
-                    var prop = propertyInfo?.FirstOrDefault(pi => StringComparer.OrdinalIgnoreCase.Equals(pi.Name, parm));
-                    var val = prop?.GetValue(obj)?.ToString();
-                    if (val != null)
+                    var parm = match.Groups[1].Value;
+                    if (parm != null)
                     {
-                        l.Href = MatchReplace(l.Href, match, val);
+                        var prop = propertyInfo.FirstOrDefault(pi => StringComparer.OrdinalIgnoreCase.Equals(pi.Name, parm));
+                        var val = prop?.GetValue(obj)?.ToString();
+                        if (val != null)
+                        {
+                            l.Href = MatchReplace(l.Href, match, val);
+                        }
                     }
                 }
             }
@@ -278,5 +274,18 @@ namespace ApiFoundation.ResourceLinking
             var capture = match.Captures[0];
             return str.Substring(0, capture.Index) + replace + str.Substring(capture.Index + capture.Length);
         }
+    }
+
+    class LinkWithMetadata
+    {
+        public Link Link { get; set; }
+
+        // The callback should both check delegated admin permissions on the route
+        // itself, and also call the "CanXXX" method related to the route handler,
+        // if one is present.
+        public CheckAvailabilityDelegate CheckAvailability { get; set; }
+
+        // (Context, resource identifier parameters) => available / not available
+        public delegate bool CheckAvailabilityDelegate(HttpContext context, IDictionary<string, string> resourceIdentifierParameters);
     }
 }
