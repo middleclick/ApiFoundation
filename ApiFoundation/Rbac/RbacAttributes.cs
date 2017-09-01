@@ -10,11 +10,19 @@ namespace ApiFoundation.Rbac
         public string[] Permissions { get; set; }
     }
 
-    [AttributeUsage(AttributeTargets.Parameter)]
+    [AttributeUsage(AttributeTargets.Method)]
     public class RbacScopeAttribute : Attribute
     {
-        public RbacScopeAttribute(string scopeType) => ScopeType = scopeType;
+        public RbacScopeAttribute(params string[] scopes) => Scopes = scopes;
 
-        public string ScopeType { get; set; }
+        public string[] Scopes { get; set; }
+    }
+
+    [AttributeUsage(AttributeTargets.Parameter)]
+    public class RbacScopeParamAttribute : Attribute
+    {
+        public RbacScopeParamAttribute(string scopeParam) => ScopeParam = scopeParam;
+
+        public string ScopeParam { get; set; }
     }
 }

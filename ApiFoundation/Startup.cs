@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using ApiFoundation.ResourceLinking;
 using ApiFoundation.Versioning;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,16 @@ namespace ApiFoundation
             services.Configure<RouteOptions>(options =>
                 options.ConstraintMap.Add("maxversion", typeof(ApiVersionRouteConstraint)));
 
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //         .AddJwtBearer(options => {
+            //             //options.Audience = "";
+            //             options.Authority = "cws";
+            //         });
+            
+            // services.AddAuthorization(options => {
+                        
+            //         });
+
             // This should be pointed to Redis
             services.AddDistributedMemoryCache();
         }
@@ -50,6 +61,7 @@ namespace ApiFoundation
             }
 
             app.UseMvc();
+            app.UseAuthentication();
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>

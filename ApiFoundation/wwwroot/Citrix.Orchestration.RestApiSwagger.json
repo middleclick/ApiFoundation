@@ -1,0 +1,7078 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "Web API Swagger specification",
+    "version": "1.0.0"
+  },
+  "schemes": [],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/nodes/administrators/": {
+      "get": {
+        "tags": [
+          "AdministratorsV1Controller"
+        ],
+        "operationId": "AdministratorsV1_GetAdministrators",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdministratorModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/appdna/": {
+      "get": {
+        "tags": [
+          "AppDNAV1Controller"
+        ],
+        "operationId": "AppDNAV1_GetAppDNAConnection",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AppDNAConnectionModelContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/applications/": {
+      "get": {
+        "tags": [
+          "ApplicationsV1Controller"
+        ],
+        "operationId": "ApplicationsV1_GetApplications",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ApplicationModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/applications/{adminFolderName}/{includeSubfolders}/adminfolder": {
+      "get": {
+        "tags": [
+          "ApplicationsV1Controller"
+        ],
+        "operationId": "ApplicationsV1_GetApplicationsByFolder",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "adminFolderName",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "boolean",
+            "name": "includeSubfolders",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ApplicationModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/applications/{appGroupUid}/appgroup": {
+      "get": {
+        "tags": [
+          "ApplicationsV1Controller"
+        ],
+        "operationId": "ApplicationsV1_GetApplicationsByApplicationGroup",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "appGroupUid",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ApplicationModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/applications/{adminFolderUid}/adminFolder": {
+      "get": {
+        "tags": [
+          "ApplicationsV1Controller"
+        ],
+        "operationId": "ApplicationsV1_GetAdminFolder",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "adminFolderUid",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AdminFolderModelContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/appvpublishing/": {
+      "get": {
+        "tags": [
+          "AppVPublishingV1Controller"
+        ],
+        "operationId": "AppVPublishingV1_GetPackages",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppVPackageModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/configuration/": {
+      "get": {
+        "tags": [
+          "ConfigurationV1Controller"
+        ],
+        "operationId": "ConfigurationV1_GetDataStores",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DataStoreModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/controllers/": {
+      "get": {
+        "tags": [
+          "ControllersV1Controller"
+        ],
+        "operationId": "ControllersV1_GetControllers",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ControllerModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverycenter/": {
+      "get": {
+        "tags": [
+          "DeliveryCenterV1Controller"
+        ],
+        "operationId": "DeliveryCenterV1_GetSiteConfigurationLogs",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ConfigurationLogsModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/hosting/": {
+      "get": {
+        "tags": [
+          "HostingV1Controller"
+        ],
+        "operationId": "HostingV1_GetHostConnections",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/HypervisorConnectionModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/licensing/": {
+      "get": {
+        "tags": [
+          "LicensingV1Controller"
+        ],
+        "operationId": "LicensingV1_GetLicenses",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LicenseModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/licensing/LicenseAdministrators": {
+      "get": {
+        "tags": [
+          "LicensingV1Controller"
+        ],
+        "operationId": "LicensingV1_GetLicenseAdministrators",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LicenseUserContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/licensing/LicensingInformation": {
+      "get": {
+        "tags": [
+          "LicensingV1Controller"
+        ],
+        "operationId": "LicensingV1_GetLicensingInformation",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LicensingInformationContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/logging/": {
+      "get": {
+        "tags": [
+          "LoggingV1Controller"
+        ],
+        "operationId": "LoggingV1_GetConfigurationLogs",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "searchString",
+            "in": "query",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "dateFilter",
+            "in": "query",
+            "required": true,
+            "x-nullable": false,
+            "$ref": "#/definitions/SearchDateOptionContract"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ConfigurationLogsModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/machinecatalogs/RemotePCAssociatedCatalogs/{deliveryGroupId}": {
+      "get": {
+        "tags": [
+          "MachineCatalogsV1Controller"
+        ],
+        "operationId": "MachineCatalogsV1_GetRemotePCAssociatedCatalogs",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "deliveryGroupId",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineCatalogTabItemModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/machinecatalogs/": {
+      "get": {
+        "tags": [
+          "MachineCatalogsV1Controller"
+        ],
+        "operationId": "MachineCatalogsV1_GetCatalogs",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineCatalogTabItemModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/machinecatalogs/{id}/details": {
+      "get": {
+        "tags": [
+          "MachineCatalogsV1Controller"
+        ],
+        "operationId": "MachineCatalogsV1_GetCatalogDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MachineCatalogDetailsModelContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/machinecatalogs/{id}/details/administrators": {
+      "get": {
+        "tags": [
+          "MachineCatalogsV1Controller"
+        ],
+        "operationId": "MachineCatalogsV1_GetMachineCatalogAdministrators",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdministratorModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/machinecatalogs/{id}/details/machines": {
+      "get": {
+        "tags": [
+          "MachineCatalogsV1Controller"
+        ],
+        "operationId": "MachineCatalogsV1_GetCatalogMachineNames",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineNameContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/machinecatalogs/{id}/details/deliverygroups": {
+      "get": {
+        "tags": [
+          "MachineCatalogsV1Controller"
+        ],
+        "operationId": "MachineCatalogsV1_GetMachineCatalogDeliveryGroups",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineCatalogDeliveryGroupsModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/icons/broker/{id}.png": {
+      "get": {
+        "tags": [
+          "IconsV1Controller"
+        ],
+        "operationId": "IconsV1_GetBrokerIcon",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "size",
+            "in": "query",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "colorDepth",
+            "in": "query",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/permissions/": {
+      "get": {
+        "tags": [
+          "PermissionsV1Controller"
+        ],
+        "operationId": "PermissionsV1_GetPermissions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserPermissionSetContract"
+            },
+            "x-nullable": true
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "304": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Void"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/policies/": {
+      "get": {
+        "tags": [
+          "PoliciesV1Controller"
+        ],
+        "operationId": "PoliciesV1_GetPolicyModeling",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PolicyModelingModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/sessions": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetSessions",
+        "parameters": [
+          {
+            "name": "searchRequest",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SearchRequestModelContract"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SessionModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/{id}/details/tags": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetMachineTags",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TagModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/desktoposmachines": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetDesktopOSSearchResults",
+        "parameters": [
+          {
+            "name": "searchRequestModel",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SearchRequestModelContract"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/desktoposmachines/{id}/details": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetVdiMachine",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MachineModelContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/serverosmachines": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetServerOSMachines",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/{id}/details/rdsmachineadministrators": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetRdsMachineAdministrators",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdministratorModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/{id}/details/vdimachineadministrators": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetVdiMachineAdministrators",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdministratorModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/search/{id}/details/sessionadministrators": {
+      "get": {
+        "tags": [
+          "SearchV1Controller"
+        ],
+        "operationId": "SearchV1_GetSessionAdministrators",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdministratorModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/features/": {
+      "get": {
+        "tags": [
+          "SiteFeaturesV1Controller"
+        ],
+        "operationId": "SiteFeaturesV1_GetDeploymentCapabilities",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DeploymentCapabilitiesContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/storefront/": {
+      "get": {
+        "tags": [
+          "StoreFrontV1Controller"
+        ],
+        "operationId": "StoreFrontV1_GetStoreFrontServers",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/StoreFrontModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroups",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "deliveryGroupIds",
+            "in": "query",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DesktopGroupModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DesktopGroupDetailsContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/applications": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupDetailsApplications",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ApplicationModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/machinecatalogs": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupCatalogDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MachineCatalogInDesktopGroupModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/machines": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupMachineDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PartialMachineModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/desktops": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupDesktopDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DesktopModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/tags": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupTagDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeliveryGroupTagContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/usage": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupUsageDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/DesktopUsageContract"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/appdisks": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupAppDisksDetails",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AppDiskModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/administrators": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupAdministrators",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AdministratorModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/deliverygroups/{id}/details/appgroups": {
+      "get": {
+        "tags": [
+          "DeliveryGroupsV1Controller"
+        ],
+        "operationId": "DeliveryGroupsV1_GetDeliveryGroupAppGroups",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ApplicationGroupModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/v1/nodes/zones/": {
+      "get": {
+        "tags": [
+          "ZonesV1Controller"
+        ],
+        "operationId": "ZonesV1_GetItemsInZone",
+        "parameters": [
+          {
+            "name": "zone",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ZoneModelContract"
+            },
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "searchString",
+            "in": "query",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "501": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ErrorContract"
+            },
+            "x-nullable": true
+          },
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ZonableItemModelContract"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorContract": {
+      "type": "object",
+      "x-typeName": "ErrorContract",
+      "additionalProperties": false,
+      "properties": {
+        "ErrorMessage": {
+          "type": "string"
+        },
+        "SdkErrorId": {
+          "type": "string"
+        },
+        "ErrorType": {
+          "type": "string"
+        },
+        "ErrorDetails": {
+          "type": "string"
+        },
+        "SupportLink": {
+          "type": "string"
+        },
+        "ErrorReportXml": {
+          "type": "string"
+        },
+        "ErrorReport": {
+          "$ref": "#/definitions/ErrorReport"
+        }
+      }
+    },
+    "ErrorReport": {
+      "type": "object",
+      "x-typeName": "ErrorReport",
+      "additionalProperties": false,
+      "properties": {
+        "CitrixErrorId": {
+          "type": "string"
+        },
+        "ComponentName": {
+          "type": "string"
+        },
+        "ComponentVersion": {
+          "type": "string"
+        },
+        "ErrorData": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AdministratorModelContract": {
+      "type": "object",
+      "x-typeName": "AdministratorModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Enabled"
+      ],
+      "properties": {
+        "User": {
+          "$ref": "#/definitions/ADAccountModelContract"
+        },
+        "ScopesAndRoles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScopeRolePairContract"
+          }
+        },
+        "Enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ADAccountModelContract": {
+      "type": "object",
+      "x-typeName": "ADAccountModelContract",
+      "additionalProperties": false,
+      "required": [
+        "ZonableItemType"
+      ],
+      "properties": {
+        "Container": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "DnsName": {
+          "type": "string"
+        },
+        "Domain": {
+          "type": "string"
+        },
+        "IsGroup": {
+          "type": "boolean"
+        },
+        "PrincipalName": {
+          "type": "string"
+        },
+        "SamName": {
+          "type": "string"
+        },
+        "Sid": {
+          "type": "string"
+        },
+        "ZonableItemType": {
+          "$ref": "#/definitions/ZonableItemTypeContract"
+        },
+        "ZonableItemDescription": {
+          "type": "string"
+        },
+        "ZonableItemId": {
+          "type": "string"
+        },
+        "ZonableItemName": {
+          "type": "string"
+        },
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ZoneName": {
+          "type": "string"
+        }
+      }
+    },
+    "ZonableItemTypeContract": {
+      "type": "integer",
+      "x-typeName": "ZonableItemTypeContract",
+      "x-enumNames": [
+        "Application",
+        "Controller",
+        "EdgeServer",
+        "HypervisorConnection",
+        "MachineCatalog",
+        "User",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "description": ""
+    },
+    "ScopeRolePairContract": {
+      "type": "object",
+      "x-typeName": "ScopeRolePairContract",
+      "additionalProperties": false,
+      "properties": {
+        "Scope": {
+          "$ref": "#/definitions/ScopeModelContract"
+        },
+        "Role": {
+          "$ref": "#/definitions/RoleModelContract"
+        }
+      }
+    },
+    "ScopeModelContract": {
+      "type": "object",
+      "x-typeName": "ScopeModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "IsBuiltIn"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "IsBuiltIn": {
+          "type": "boolean"
+        }
+      }
+    },
+    "RoleModelContract": {
+      "type": "object",
+      "x-typeName": "RoleModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "IsBuiltIn"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "IsBuiltIn": {
+          "type": "boolean"
+        },
+        "Permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DelegatedAdminPermissionModelContract"
+          }
+        }
+      }
+    },
+    "DelegatedAdminPermissionModelContract": {
+      "type": "object",
+      "x-typeName": "DelegatedAdminPermissionModelContract",
+      "additionalProperties": false,
+      "required": [
+        "ReadOnly",
+        "IsHidden"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "ReadOnly": {
+          "type": "boolean"
+        },
+        "IsHidden": {
+          "type": "boolean"
+        },
+        "Operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AppDNAConnectionModelContract": {
+      "type": "object",
+      "x-typeName": "AppDNAConnectionModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Enabled"
+      ],
+      "properties": {
+        "AppDNAServerAddress": {
+          "type": "string"
+        },
+        "AppDNADatabase": {
+          "type": "string"
+        },
+        "AppDNAUserName": {
+          "type": "string"
+        },
+        "AppDNAPassword": {
+          "$ref": "#/definitions/SecureString"
+        },
+        "Enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SecureString": {
+      "type": "object",
+      "x-typeName": "SecureString",
+      "additionalProperties": false,
+      "required": [
+        "Length",
+        "BufferLength"
+      ],
+      "properties": {
+        "Length": {
+          "type": "integer"
+        },
+        "BufferLength": {
+          "type": "integer"
+        }
+      }
+    },
+    "ApplicationModelContract": {
+      "type": "object",
+      "x-typeName": "ApplicationModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "IconUid",
+        "ApplicationType",
+        "Enabled",
+        "UserFilterEnabled",
+        "ZoneId",
+        "HomeZoneOnly",
+        "IgnoreUserHomeZone"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Uid": {
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "IconUid": {
+          "type": "integer"
+        },
+        "ApplicationType": {
+          "$ref": "#/definitions/ApplicationTypeContract"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "IconData": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "byte"
+          }
+        },
+        "CommandLineExecutable": {
+          "type": "string"
+        },
+        "CommandLineArguments": {
+          "type": "string"
+        },
+        "BrowserName": {
+          "type": "string"
+        },
+        "DesktopGroupName": {
+          "type": "string"
+        },
+        "ApplicationGroupName": {
+          "type": "string"
+        },
+        "PublishedName": {
+          "type": "string"
+        },
+        "UserFilterEnabled": {
+          "type": "boolean"
+        },
+        "AssociatedUsersNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AdminFolderPath": {
+          "type": "string"
+        },
+        "WorkingDirectory": {
+          "type": "string"
+        },
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "HomeZoneOnly": {
+          "type": "boolean"
+        },
+        "IgnoreUserHomeZone": {
+          "type": "boolean"
+        },
+        "Scopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScopeModelContract"
+          }
+        },
+        "ScopeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ApplicationTypeContract": {
+      "type": "integer",
+      "x-typeName": "ApplicationTypeContract",
+      "x-enumNames": [
+        "Unknown",
+        "HostedOnDesktop",
+        "InstalledOnClient",
+        "SessionPreLauncher",
+        "PublishedContent",
+        "AppV",
+        "AppLibraryAppV"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "description": ""
+    },
+    "AdminFolderModelContract": {
+      "type": "object",
+      "x-typeName": "AdminFolderModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "LastChangeId",
+        "TotalApplications"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "integer"
+        },
+        "LastChangeId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "FullName": {
+          "type": "string"
+        },
+        "TotalApplications": {
+          "type": "integer"
+        },
+        "Parent": {
+          "$ref": "#/definitions/AdminFolderModel"
+        }
+      }
+    },
+    "AdminFolderModel": {
+      "type": "object",
+      "x-typeName": "AdminFolderModel",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "LastChangeId",
+        "TotalApplications"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "integer"
+        },
+        "LastChangeId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "FullName": {
+          "type": "string"
+        },
+        "TotalApplications": {
+          "type": "integer"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ModelBase"
+        }
+      ]
+    },
+    "ModelBase": {
+      "type": "object",
+      "x-typeName": "ModelBase",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/ObjectWithPropertyBag"
+        }
+      ]
+    },
+    "ObjectWithPropertyBag": {
+      "type": "object",
+      "x-typeName": "ObjectWithPropertyBag",
+      "additionalProperties": false,
+      "properties": {
+        "PropertyBag": {
+          "$ref": "#/definitions/PropertyBag"
+        }
+      }
+    },
+    "PropertyBag": {
+      "type": "object",
+      "x-typeName": "PropertyBag",
+      "additionalProperties": false
+    },
+    "AppVPackageModelContract": {
+      "type": "object",
+      "x-typeName": "AppVPackageModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "AppLibraryUid",
+        "SourceType",
+        "Exists",
+        "OrderNumber",
+        "ExplicitInclusion"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "integer"
+        },
+        "Path": {
+          "type": "string"
+        },
+        "PackageId": {
+          "type": "string"
+        },
+        "PackageVersionId": {
+          "type": "string"
+        },
+        "PackageVersion": {
+          "type": "string"
+        },
+        "SourceName": {
+          "type": "string"
+        },
+        "AppLibraryUid": {
+          "type": "integer"
+        },
+        "SourceType": {
+          "$ref": "#/definitions/AppVSourceContract"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "PackageName": {
+          "type": "string"
+        },
+        "Exists": {
+          "type": "boolean"
+        },
+        "Icon": {
+          "$ref": "#/definitions/IconModelContract"
+        },
+        "OrderNumber": {
+          "type": "integer"
+        },
+        "ExplicitInclusion": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AppVSourceContract": {
+      "type": "integer",
+      "x-typeName": "AppVSourceContract",
+      "x-enumNames": [
+        "Unknown",
+        "AppVServer",
+        "AppLibrary"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "IconModelContract": {
+      "type": "object",
+      "x-typeName": "IconModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "AppLibraryApplicationUid"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "integer"
+        },
+        "AppLibraryApplicationUid": {
+          "type": "integer"
+        },
+        "IconData": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "VdaIconSource": {
+          "type": "string"
+        }
+      }
+    },
+    "DataStoreModelContract": {
+      "type": "object",
+      "x-typeName": "DataStoreModelContract",
+      "additionalProperties": false,
+      "required": [
+        "DataStore"
+      ],
+      "properties": {
+        "DataStore": {
+          "$ref": "#/definitions/DataStoreContract"
+        },
+        "DatabaseName": {
+          "type": "string"
+        },
+        "ServerAddress": {
+          "type": "string"
+        },
+        "MirrorServerAddress": {
+          "type": "string"
+        }
+      }
+    },
+    "DataStoreContract": {
+      "type": "integer",
+      "x-typeName": "DataStoreContract",
+      "x-enumNames": [
+        "Unknown",
+        "Site",
+        "Logging",
+        "Monitor"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "description": ""
+    },
+    "ControllerModelContract": {
+      "type": "object",
+      "x-typeName": "ControllerModelContract",
+      "additionalProperties": false,
+      "required": [
+        "ServiceHostId",
+        "RegisteredDesktops",
+        "ControllerState",
+        "ZonableItemType"
+      ],
+      "properties": {
+        "Sid": {
+          "type": "string"
+        },
+        "MachineName": {
+          "type": "string"
+        },
+        "DnsName": {
+          "type": "string"
+        },
+        "ServiceHostId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ControllerVersion": {
+          "type": "string"
+        },
+        "RegisteredDesktops": {
+          "type": "integer"
+        },
+        "LastActivityTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastStartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "OSVersion": {
+          "type": "string"
+        },
+        "OSType": {
+          "type": "string"
+        },
+        "ControllerState": {
+          "$ref": "#/definitions/ControllerStateContract"
+        },
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ZonableItemId": {
+          "type": "string"
+        },
+        "ZonableItemType": {
+          "$ref": "#/definitions/ZonableItemTypeContract"
+        },
+        "ZoneName": {
+          "type": "string"
+        },
+        "ZonableItemName": {
+          "type": "string"
+        },
+        "ZonableItemDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "ControllerStateContract": {
+      "type": "integer",
+      "x-typeName": "ControllerStateContract",
+      "x-enumNames": [
+        "Unknown",
+        "Failed",
+        "Off",
+        "Transitioning",
+        "Active"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "ConfigurationLogsModelContract": {
+      "type": "object",
+      "x-typeName": "ConfigurationLogsModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "StartTime"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "StartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EndTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "IsSuccessful": {
+          "type": "boolean"
+        },
+        "User": {
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        }
+      }
+    },
+    "HypervisorConnectionModelContract": {
+      "type": "object",
+      "x-typeName": "HypervisorConnectionModelContract",
+      "additionalProperties": false,
+      "required": [
+        "IsVirtual",
+        "ConnectionType"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "IsVirtual": {
+          "type": "boolean"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "UserName": {
+          "type": "string"
+        },
+        "SecurePassword": {
+          "$ref": "#/definitions/SecureString"
+        },
+        "ConnectionType": {
+          "$ref": "#/definitions/HypervisorConnectionTypeContract"
+        },
+        "PluginId": {
+          "type": "string"
+        },
+        "Options": {
+          "type": "string"
+        },
+        "CustomProperties": {
+          "type": "string"
+        },
+        "ZoneName": {
+          "type": "string"
+        },
+        "HAServerAddresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Thumbprints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ScopeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "HypervisorConnectionTypeContract": {
+      "type": "integer",
+      "x-typeName": "HypervisorConnectionTypeContract",
+      "x-enumNames": [
+        "Unknown",
+        "XenServer",
+        "SCVMM",
+        "VCenter",
+        "Custom",
+        "AWS",
+        "CloudPlatform",
+        "WakeOnLAN",
+        "Unsupported",
+        "None"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "description": ""
+    },
+    "LicenseModelContract": {
+      "type": "object",
+      "x-typeName": "LicenseModelContract",
+      "additionalProperties": false,
+      "required": [
+        "LicensesInUse",
+        "LicensesAvailable",
+        "LicenseOverdraft",
+        "RecognizedLicensingModel",
+        "RecognizedProductEdition",
+        "RecognizedProductLicense"
+      ],
+      "properties": {
+        "LicenseProductName": {
+          "type": "string"
+        },
+        "LocalizedLicenseProductName": {
+          "type": "string"
+        },
+        "LicenseEdition": {
+          "type": "string"
+        },
+        "LicenseLocalizedEdition": {
+          "type": "string"
+        },
+        "LicenseExpirationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LicenseSubscriptionAdvantageDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LicenseType": {
+          "type": "string"
+        },
+        "LocalizedLicenseType": {
+          "type": "string"
+        },
+        "LicensesInUse": {
+          "type": "integer"
+        },
+        "LicensesAvailable": {
+          "type": "integer"
+        },
+        "LicenseOverdraft": {
+          "type": "integer"
+        },
+        "LicensingModel": {
+          "type": "string"
+        },
+        "LocalizedLicensingModel": {
+          "type": "string"
+        },
+        "RecognizedLicensingModel": {
+          "$ref": "#/definitions/LicensingModelContract"
+        },
+        "RecognizedProductEdition": {
+          "$ref": "#/definitions/ProductEditionContract"
+        },
+        "RecognizedProductLicense": {
+          "$ref": "#/definitions/ProductLicenseContract"
+        }
+      }
+    },
+    "LicensingModelContract": {
+      "type": "integer",
+      "x-typeName": "LicensingModelContract",
+      "x-enumNames": [
+        "Unknown",
+        "Concurrent",
+        "UserDevice"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "ProductEditionContract": {
+      "type": "integer",
+      "x-typeName": "ProductEditionContract",
+      "x-enumNames": [
+        "Unknown",
+        "Platinum",
+        "Enterprise",
+        "Apps",
+        "Vdi",
+        "Advanced"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": ""
+    },
+    "ProductLicenseContract": {
+      "type": "integer",
+      "x-typeName": "ProductLicenseContract",
+      "x-enumNames": [
+        "Unknown",
+        "XenDesktopXds",
+        "XenDesktopXdt",
+        "XenDesktopXdtTP",
+        "XenApp"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "LicenseUserContract": {
+      "type": "object",
+      "x-typeName": "LicenseUserContract",
+      "additionalProperties": false,
+      "required": [
+        "PermissionLevel",
+        "IsGroup"
+      ],
+      "properties": {
+        "Account": {
+          "type": "string"
+        },
+        "AccountSid": {
+          "type": "string"
+        },
+        "PermissionLevel": {
+          "$ref": "#/definitions/LicensePermissionLevelContract"
+        },
+        "IsGroup": {
+          "type": "boolean"
+        }
+      }
+    },
+    "LicensePermissionLevelContract": {
+      "type": "integer",
+      "x-typeName": "LicensePermissionLevelContract",
+      "x-enumNames": [
+        "Unknown",
+        "ReadOnly",
+        "Full",
+        "None"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "description": ""
+    },
+    "LicensingInformationContract": {
+      "type": "object",
+      "x-typeName": "LicensingInformationContract",
+      "additionalProperties": false,
+      "required": [
+        "LicensePermissionLevel",
+        "HasLicenseInformation",
+        "HasCertificate",
+        "HasTrustedCertificate"
+      ],
+      "properties": {
+        "LicensePermissionLevel": {
+          "$ref": "#/definitions/LicensePermissionLevelContract"
+        },
+        "HasLicenseInformation": {
+          "type": "boolean"
+        },
+        "HasCertificate": {
+          "type": "boolean"
+        },
+        "HasTrustedCertificate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SearchDateOptionContract": {
+      "type": "integer",
+      "x-typeName": "SearchDateOptionContract",
+      "x-enumNames": [
+        "LastMinute",
+        "Last5Minutes",
+        "Last30Minutes",
+        "LastHour",
+        "Last12Hours",
+        "Last24Hours",
+        "Today",
+        "Yesterday",
+        "LastMonth",
+        "LastSixMonths",
+        "LastThreeMonths",
+        "Last28Days",
+        "Last7Days"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "description": ""
+    },
+    "MachineCatalogTabItemModelContract": {
+      "type": "object",
+      "x-typeName": "MachineCatalogTabItemModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "ProvisioningTypeMachineCatalog",
+        "MinimumFunctionalLevel",
+        "AllocationTypeMachineCatalog",
+        "SessionSupport",
+        "TotalMachines",
+        "AvailableCount",
+        "IsBroken",
+        "RemotePC",
+        "IsNutanix",
+        "IsNutanixContainerExist",
+        "CoresPerVMCpu",
+        "TempMemoryCacheSize",
+        "TempDiskCacheSize",
+        "IsFastClone",
+        "MachineType",
+        "SaveUserChangesToVirtualDesktops",
+        "IsHostingUnitDiskImageExist",
+        "IsRunning",
+        "HasWarning",
+        "UsesCloudInfrastructure",
+        "ShowTemporaryCacheInformation",
+        "ShowFullCopyInformation",
+        "HasVgpu",
+        "ShowPersonalVDiskInformation",
+        "UsedCount",
+        "IsZones",
+        "IsAzure",
+        "CanRollbackVMImage",
+        "AppDNAEnabled",
+        "AppDNACatalogImportStateRunning",
+        "HasBeenPromoted"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "ProvisioningTypeMachineCatalog": {
+          "$ref": "#/definitions/ProvisioningTypeContract"
+        },
+        "MinimumFunctionalLevel": {
+          "$ref": "#/definitions/FunctionalLevelModelContract"
+        },
+        "AllocationTypeMachineCatalog": {
+          "$ref": "#/definitions/AllocationTypeContract"
+        },
+        "SessionSupport": {
+          "$ref": "#/definitions/SessionSupportContract"
+        },
+        "AnalysisState": {
+          "$ref": "#/definitions/AppDNAAnalysisStateContract"
+        },
+        "TotalMachines": {
+          "type": "integer"
+        },
+        "AvailableCount": {
+          "type": "integer"
+        },
+        "IsBroken": {
+          "type": "boolean"
+        },
+        "RemotePC": {
+          "type": "boolean"
+        },
+        "BackgroundTask": {
+          "$ref": "#/definitions/BackgroundTaskModelContract"
+        },
+        "Scopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScopeModelContract"
+          }
+        },
+        "IsNutanix": {
+          "type": "boolean"
+        },
+        "IsNutanixContainerExist": {
+          "type": "boolean"
+        },
+        "NutanixContainerName": {
+          "type": "string"
+        },
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ZoneName": {
+          "type": "string"
+        },
+        "CoresPerVMCpu": {
+          "type": "integer"
+        },
+        "TempMemoryCacheSize": {
+          "type": "integer"
+        },
+        "TempDiskCacheSize": {
+          "type": "integer"
+        },
+        "IsFastClone": {
+          "type": "boolean"
+        },
+        "MachineType": {
+          "$ref": "#/definitions/MachineTypeContract"
+        },
+        "SaveUserChangesToVirtualDesktops": {
+          "$ref": "#/definitions/PersistUserChangesContract"
+        },
+        "IsHostingUnitDiskImageExist": {
+          "type": "boolean"
+        },
+        "IsRunning": {
+          "type": "boolean"
+        },
+        "HasWarning": {
+          "type": "boolean"
+        },
+        "UsesCloudInfrastructure": {
+          "type": "boolean"
+        },
+        "RemotePCHypervisorConnectionUid": {
+          "type": "integer"
+        },
+        "ShowTemporaryCacheInformation": {
+          "type": "boolean"
+        },
+        "ShowFullCopyInformation": {
+          "type": "boolean"
+        },
+        "HasVgpu": {
+          "type": "boolean"
+        },
+        "ShowPersonalVDiskInformation": {
+          "type": "boolean"
+        },
+        "UsedCount": {
+          "type": "integer"
+        },
+        "IsZones": {
+          "type": "boolean"
+        },
+        "RemotePCHypervisorConnectionName": {
+          "type": "string"
+        },
+        "IsAzure": {
+          "type": "boolean"
+        },
+        "CanRollbackVMImage": {
+          "type": "boolean"
+        },
+        "AppDNAEnabled": {
+          "type": "boolean"
+        },
+        "AppDNACatalogImportStateRunning": {
+          "type": "boolean"
+        },
+        "HasBeenPromoted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProvisioningTypeContract": {
+      "type": "integer",
+      "x-typeName": "ProvisioningTypeContract",
+      "x-enumNames": [
+        "Unknown",
+        "Manual",
+        "MCS",
+        "PVS"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "description": ""
+    },
+    "FunctionalLevelModelContract": {
+      "type": "integer",
+      "x-typeName": "FunctionalLevelModelContract",
+      "x-enumNames": [
+        "Unknown",
+        "L5",
+        "LMIN",
+        "L7",
+        "L7_6",
+        "L7_7",
+        "L7_8",
+        "L7_9",
+        "LMAX"
+      ],
+      "enum": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        6
+      ],
+      "description": ""
+    },
+    "AllocationTypeContract": {
+      "type": "integer",
+      "x-typeName": "AllocationTypeContract",
+      "x-enumNames": [
+        "Permanent",
+        "Random",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "SessionSupportContract": {
+      "type": "integer",
+      "x-typeName": "SessionSupportContract",
+      "x-enumNames": [
+        "SingleSession",
+        "MultiSession",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "AppDNAAnalysisStateContract": {
+      "type": "integer",
+      "x-typeName": "AppDNAAnalysisStateContract",
+      "x-enumNames": [
+        "None",
+        "Unknown",
+        "Unsupported",
+        "Capturing",
+        "Canceled",
+        "Analyzing",
+        "Ready",
+        "Failed",
+        "Importing"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "description": ""
+    },
+    "BackgroundTaskModelContract": {
+      "type": "object",
+      "x-typeName": "BackgroundTaskModelContract",
+      "additionalProperties": false,
+      "required": [
+        "TaskId",
+        "IsRunning",
+        "Progress"
+      ],
+      "properties": {
+        "TaskId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "IsRunning": {
+          "type": "boolean"
+        },
+        "Progress": {
+          "type": "number",
+          "format": "double"
+        },
+        "ProgressMessage": {
+          "type": "string"
+        }
+      }
+    },
+    "MachineTypeContract": {
+      "type": "integer",
+      "x-typeName": "MachineTypeContract",
+      "x-enumNames": [
+        "Virtual",
+        "Physical",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "PersistUserChangesContract": {
+      "type": "integer",
+      "x-typeName": "PersistUserChangesContract",
+      "x-enumNames": [
+        "Unknown",
+        "Discard",
+        "OnLocal",
+        "OnPvd"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "description": ""
+    },
+    "MachineCatalogDetailsModelContract": {
+      "type": "object",
+      "x-typeName": "MachineCatalogDetailsModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "ProvisioningTypeDetails",
+        "AllocationTypeDetails",
+        "RemotePC",
+        "MachineType",
+        "SessionSupport",
+        "TotalMachines",
+        "AvailableCount",
+        "IsBroken",
+        "MinimumFunctionalLevel",
+        "UsesCloudInfrastructure",
+        "IsNutanix",
+        "GetDeploymentCapabilitiesZones",
+        "ShowTemporaryCacheInformation",
+        "IsDedicatedTenancy",
+        "IsFastClone",
+        "HasVgpu",
+        "ShowFullCopyInformation",
+        "ShowPersonalVDiskInformation",
+        "GpuMemoryColumn",
+        "AzureMemory",
+        "ExtraErrorsCount",
+        "HasProvisioningSchemeWarnings",
+        "IsAzure"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "ProvisioningTypeDetails": {
+          "$ref": "#/definitions/ProvisioningTypeContract"
+        },
+        "AllocationTypeDetails": {
+          "$ref": "#/definitions/AllocationTypeContract"
+        },
+        "RemotePC": {
+          "type": "boolean"
+        },
+        "MachineType": {
+          "$ref": "#/definitions/MachineTypeContract"
+        },
+        "SessionSupport": {
+          "$ref": "#/definitions/SessionSupportContract"
+        },
+        "TotalMachines": {
+          "type": "integer"
+        },
+        "AvailableCount": {
+          "type": "integer"
+        },
+        "IsBroken": {
+          "type": "boolean"
+        },
+        "BackgroundTask": {
+          "$ref": "#/definitions/BackgroundTaskModelContract"
+        },
+        "MinimumFunctionalLevel": {
+          "$ref": "#/definitions/FunctionalLevelModelContract"
+        },
+        "Scopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScopeModelContract"
+          }
+        },
+        "VdaVersions": {
+          "type": "string"
+        },
+        "OSVersions": {
+          "type": "string"
+        },
+        "HostName": {
+          "type": "string"
+        },
+        "UsesCloudInfrastructure": {
+          "type": "boolean"
+        },
+        "IsNutanix": {
+          "type": "boolean"
+        },
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ZoneName": {
+          "type": "string"
+        },
+        "GetDeploymentCapabilitiesZones": {
+          "type": "boolean"
+        },
+        "ShowTemporaryCacheInformation": {
+          "type": "boolean"
+        },
+        "DiskImageName": {
+          "type": "string"
+        },
+        "DiskImageNutanixContainerName": {
+          "type": "string"
+        },
+        "RemotePCHypervisorConnectionName": {
+          "type": "string"
+        },
+        "ServiceOfferingName": {
+          "type": "string"
+        },
+        "SecurityGroupNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "IsDedicatedTenancy": {
+          "type": "boolean"
+        },
+        "CpusPerVM": {
+          "type": "integer"
+        },
+        "CoresPerVMCpu": {
+          "type": "integer"
+        },
+        "MemoryPerVM": {
+          "type": "integer"
+        },
+        "HardDiskSize": {
+          "type": "integer"
+        },
+        "TempMemoryCacheSize": {
+          "type": "integer"
+        },
+        "TempDiskCacheSize": {
+          "type": "integer"
+        },
+        "IsFastClone": {
+          "type": "boolean"
+        },
+        "HasVgpu": {
+          "type": "boolean"
+        },
+        "PersonalVDiskSize": {
+          "type": "integer"
+        },
+        "PersonalVDiskDriveLetter": {
+          "type": "string"
+        },
+        "RemotePCHypervisorConnectionUid": {
+          "type": "integer"
+        },
+        "ShowFullCopyInformation": {
+          "type": "boolean"
+        },
+        "ShowPersonalVDiskInformation": {
+          "type": "boolean"
+        },
+        "GpuMemoryColumn": {
+          "type": "integer"
+        },
+        "AzureMemory": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "AzureCores": {
+          "type": "string"
+        },
+        "IsAzureMemoryInMB": {
+          "type": "boolean"
+        },
+        "Errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "HasWarning": {
+          "type": "boolean"
+        },
+        "HasWarningMessage": {
+          "type": "boolean"
+        },
+        "WarningMessage": {
+          "type": "string"
+        },
+        "HasActionWarnings": {
+          "type": "boolean"
+        },
+        "ExtraErrorsCount": {
+          "type": "integer"
+        },
+        "ShortActionErrorsList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "HasProvisioningSchemeWarnings": {
+          "type": "boolean"
+        },
+        "ProvisioningSchemeWarnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WarningModelContract"
+          }
+        },
+        "IsAzure": {
+          "type": "boolean"
+        }
+      }
+    },
+    "WarningModelContract": {
+      "type": "object",
+      "x-typeName": "WarningModelContract",
+      "additionalProperties": false,
+      "required": [
+        "WarningId"
+      ],
+      "properties": {
+        "WarningId": {
+          "$ref": "#/definitions/SdkProvisioningSchemeWarningTypeContract"
+        },
+        "WarningDetails": {
+          "type": "string"
+        }
+      }
+    },
+    "SdkProvisioningSchemeWarningTypeContract": {
+      "type": "integer",
+      "x-typeName": "SdkProvisioningSchemeWarningTypeContract",
+      "x-enumNames": [
+        "Unknown",
+        "ImagePreparationOSRearmCountExceeded",
+        "ImagePreparationOSRearmFailed",
+        "ImagePreparationOfficeRearmCountExceeded",
+        "ImagePreparationOfficeRearmFailed"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "MachineNameContract": {
+      "type": "object",
+      "x-typeName": "MachineNameContract",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "MachineCatalogDeliveryGroupsModelContract": {
+      "type": "object",
+      "x-typeName": "MachineCatalogDeliveryGroupsModelContract",
+      "additionalProperties": false,
+      "required": [
+        "DeliveryGroupUid",
+        "IsDeliveryGroupAssociated",
+        "Priority",
+        "RemotePC"
+      ],
+      "properties": {
+        "DeliveryGroupUid": {
+          "type": "integer"
+        },
+        "DeliveryGroupName": {
+          "type": "string"
+        },
+        "IsDeliveryGroupAssociated": {
+          "type": "boolean"
+        },
+        "Priority": {
+          "type": "integer"
+        },
+        "RemotePC": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserPermissionSetContract": {
+      "type": "object",
+      "x-typeName": "UserPermissionSetContract",
+      "additionalProperties": false,
+      "properties": {
+        "UserRoleScopePairs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleScopePairContract"
+          }
+        },
+        "RoleToPermissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoleToPermissionsContract"
+          }
+        }
+      }
+    },
+    "RoleScopePairContract": {
+      "type": "object",
+      "x-typeName": "RoleScopePairContract",
+      "additionalProperties": false,
+      "required": [
+        "Role",
+        "Scope"
+      ],
+      "properties": {
+        "Role": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Scope": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "RoleToPermissionsContract": {
+      "type": "object",
+      "x-typeName": "RoleToPermissionsContract",
+      "additionalProperties": false,
+      "required": [
+        "Role"
+      ],
+      "properties": {
+        "Role": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Void": {
+      "type": "object",
+      "x-typeName": "Void",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValueType"
+        }
+      ]
+    },
+    "ValueType": {
+      "type": "object",
+      "x-typeName": "ValueType",
+      "additionalProperties": false
+    },
+    "PolicyModelingModelContract": {
+      "type": "object",
+      "x-typeName": "PolicyModelingModelContract",
+      "additionalProperties": false,
+      "required": [
+        "LastModelingTime"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "User": {
+          "type": "string"
+        },
+        "Machine": {
+          "type": "string"
+        },
+        "LastModelingTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "SearchRequestModelContract": {
+      "type": "object",
+      "x-typeName": "SearchRequestModelContract",
+      "additionalProperties": false,
+      "required": [
+        "RequiredCount",
+        "ReturnTotalRecordCount",
+        "StartingRecord"
+      ],
+      "properties": {
+        "RequiredCount": {
+          "type": "integer"
+        },
+        "ReturnTotalRecordCount": {
+          "type": "boolean"
+        },
+        "SearchFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SearchFilterContract"
+          }
+        },
+        "SortCriteria": {
+          "$ref": "#/definitions/SortCriteriaContract"
+        },
+        "StartingRecord": {
+          "type": "integer"
+        }
+      }
+    },
+    "SearchFilterContract": {
+      "type": "object",
+      "x-typeName": "SearchFilterContract",
+      "additionalProperties": false,
+      "required": [
+        "TypeName",
+        "Operator"
+      ],
+      "properties": {
+        "TypeName": {
+          "$ref": "#/definitions/SearchFilterTypeNameContract"
+        },
+        "EnumName": {
+          "type": "string"
+        },
+        "ParameterName": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        },
+        "Operator": {
+          "$ref": "#/definitions/SearchOperatorContract"
+        }
+      }
+    },
+    "SearchFilterTypeNameContract": {
+      "type": "integer",
+      "x-typeName": "SearchFilterTypeNameContract",
+      "x-enumNames": [
+        "Boolean",
+        "Number",
+        "String",
+        "Enum",
+        "Dates"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "SearchOperatorContract": {
+      "type": "integer",
+      "x-typeName": "SearchOperatorContract",
+      "x-enumNames": [
+        "Equals",
+        "NotEquals",
+        "LessThan",
+        "GreaterThan",
+        "Like",
+        "NotLike",
+        "StartsWith",
+        "EndsWith",
+        "None",
+        "Any",
+        "Contains",
+        "ContainsLike",
+        "ContainsStartsWith",
+        "ContainsEndsWith",
+        "NotContains",
+        "In",
+        "NotIn",
+        "IsWithin",
+        "IsNotWithin"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "description": ""
+    },
+    "SortCriteriaContract": {
+      "type": "object",
+      "x-typeName": "SortCriteriaContract",
+      "additionalProperties": false,
+      "required": [
+        "SortDirection"
+      ],
+      "properties": {
+        "Property": {
+          "type": "string"
+        },
+        "SortDirection": {
+          "$ref": "#/definitions/ListSortDirectionContract"
+        }
+      }
+    },
+    "ListSortDirectionContract": {
+      "type": "integer",
+      "x-typeName": "ListSortDirectionContract",
+      "x-enumNames": [
+        "Ascending",
+        "Descending"
+      ],
+      "enum": [
+        0,
+        1
+      ],
+      "description": ""
+    },
+    "SessionModelContract": {
+      "type": "object",
+      "x-typeName": "SessionModelContract",
+      "additionalProperties": false,
+      "required": [
+        "AutonomouslyBrokered",
+        "DesktopKind",
+        "DesktopUid",
+        "Hidden",
+        "InMaintenanceMode",
+        "IsPhysical",
+        "PersistUserChanges",
+        "ProvisioningType",
+        "SessionId",
+        "SessionState",
+        "SessionStateChangeTime",
+        "SessionSupport",
+        "SummaryState",
+        "Uid",
+        "IsAnonymousUser"
+      ],
+      "properties": {
+        "AgentVersion": {
+          "type": "string"
+        },
+        "ApplicationsInUse": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AppState": {
+          "$ref": "#/definitions/DesktopSessionAppStateContract"
+        },
+        "AutonomouslyBrokered": {
+          "type": "boolean"
+        },
+        "BrokeringTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "BrokeringUserName": {
+          "type": "string"
+        },
+        "BrokeringUserSid": {
+          "type": "string"
+        },
+        "CatalogName": {
+          "type": "string"
+        },
+        "ClientAddress": {
+          "type": "string"
+        },
+        "ClientName": {
+          "type": "string"
+        },
+        "ClientVersion": {
+          "type": "string"
+        },
+        "ConnectedViaHostName": {
+          "type": "string"
+        },
+        "ConnectedViaIP": {
+          "type": "string"
+        },
+        "ControllerDnsName": {
+          "type": "string"
+        },
+        "DeliveryGroupName": {
+          "type": "string"
+        },
+        "DesktopKind": {
+          "$ref": "#/definitions/DesktopKindContract"
+        },
+        "DesktopSid": {
+          "type": "string"
+        },
+        "DesktopUid": {
+          "type": "integer"
+        },
+        "DeviceId": {
+          "type": "string"
+        },
+        "DnsName": {
+          "type": "string"
+        },
+        "HardwareId": {
+          "type": "string"
+        },
+        "Hidden": {
+          "type": "boolean"
+        },
+        "HostedMachineName": {
+          "type": "string"
+        },
+        "HostingServerName": {
+          "type": "string"
+        },
+        "HypervisorConnectionName": {
+          "type": "string"
+        },
+        "ImageOutOfDate": {
+          "type": "boolean"
+        },
+        "InMaintenanceMode": {
+          "type": "boolean"
+        },
+        "IPAddress": {
+          "type": "string"
+        },
+        "IsPhysical": {
+          "type": "boolean"
+        },
+        "LaunchedViaHostName": {
+          "type": "string"
+        },
+        "LaunchedViaIP": {
+          "type": "string"
+        },
+        "OSType": {
+          "type": "string"
+        },
+        "PersistUserChanges": {
+          "$ref": "#/definitions/PersistUserChangesContract"
+        },
+        "Protocol": {
+          "type": "string"
+        },
+        "ProvisioningType": {
+          "$ref": "#/definitions/ProvisioningTypeContract"
+        },
+        "SecureIcaActive": {
+          "type": "boolean"
+        },
+        "SessionId": {
+          "type": "integer"
+        },
+        "SessionState": {
+          "$ref": "#/definitions/DesktopSessionStateContract"
+        },
+        "SessionStateChangeTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "SessionSupport": {
+          "$ref": "#/definitions/SessionSupportContract"
+        },
+        "SmartAccessTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "StartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "SummaryState": {
+          "$ref": "#/definitions/DesktopSummaryStateContract"
+        },
+        "Uid": {
+          "type": "integer",
+          "format": "long"
+        },
+        "SessionUserName": {
+          "type": "string"
+        },
+        "UserSid": {
+          "type": "string"
+        },
+        "SessionType": {
+          "$ref": "#/definitions/SessionTypeContract"
+        },
+        "IsAnonymousUser": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DesktopSessionAppStateContract": {
+      "type": "integer",
+      "x-typeName": "DesktopSessionAppStateContract",
+      "x-enumNames": [
+        "Unknown",
+        "PreLogon",
+        "PreLaunched",
+        "Active",
+        "Desktop",
+        "Lingering",
+        "NoApps"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "description": ""
+    },
+    "DesktopKindContract": {
+      "type": "integer",
+      "x-typeName": "DesktopKindContract",
+      "x-enumNames": [
+        "Unknown",
+        "Private",
+        "Shared"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "DesktopSessionStateContract": {
+      "type": "integer",
+      "x-typeName": "DesktopSessionStateContract",
+      "x-enumNames": [
+        "Other",
+        "PreparingSession",
+        "Connected",
+        "Active",
+        "Disconnected",
+        "Reconnecting",
+        "NonBrokeredSession",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "description": ""
+    },
+    "DesktopSummaryStateContract": {
+      "type": "integer",
+      "x-typeName": "DesktopSummaryStateContract",
+      "x-enumNames": [
+        "Unknown",
+        "Off",
+        "Unregistered",
+        "Available",
+        "Disconnected",
+        "InUse",
+        "Preparing"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "description": ""
+    },
+    "SessionTypeContract": {
+      "type": "integer",
+      "x-typeName": "SessionTypeContract",
+      "x-enumNames": [
+        "Unknown",
+        "Desktop",
+        "Application"
+      ],
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "description": ""
+    },
+    "TagModelContract": {
+      "type": "object",
+      "x-typeName": "TagModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Guid",
+        "TagUid"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Guid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "TagUid": {
+          "type": "integer"
+        }
+      }
+    },
+    "MachineModelContract": {
+      "type": "object",
+      "x-typeName": "MachineModelContract",
+      "additionalProperties": false,
+      "required": [
+        "AllocationType",
+        "CatalogUid",
+        "IsAssigned",
+        "IsPhysical",
+        "PersistUserChanges",
+        "PowerActionPending",
+        "PowerState",
+        "ProvisioningType",
+        "PvdStage",
+        "RegistrationState",
+        "ScheduledReboot",
+        "SessionCount",
+        "SessionSupport",
+        "SummaryState",
+        "SupportsSuspend",
+        "SupportsResume",
+        "SupportsReset",
+        "SupportsRestart",
+        "SupportsShutdown",
+        "SupportsTurnOn",
+        "SupportsTurnOff",
+        "Guid",
+        "Uid",
+        "WillShutdownAfterUse",
+        "IsReserved",
+        "ZoneUid",
+        "ErrorState",
+        "FaultState"
+      ],
+      "properties": {
+        "ApplicationsInUse": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AgentVersion": {
+          "type": "string"
+        },
+        "AllocationType": {
+          "$ref": "#/definitions/AllocationTypeContract"
+        },
+        "AssignedClientName": {
+          "type": "string"
+        },
+        "AssignedIPAddress": {
+          "type": "string"
+        },
+        "AssociatedUserFullNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AssociatedUserNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AssociatedUserUpns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "CatalogName": {
+          "type": "string"
+        },
+        "CatalogUid": {
+          "type": "integer"
+        },
+        "ClientAddress": {
+          "type": "string"
+        },
+        "ClientName": {
+          "type": "string"
+        },
+        "ClientVersion": {
+          "type": "string"
+        },
+        "ColorDepth": {
+          "$ref": "#/definitions/ColorDepthContract"
+        },
+        "ConnectedViaHostName": {
+          "type": "string"
+        },
+        "ConnectedViaIP": {
+          "type": "string"
+        },
+        "ControllerDnsName": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "DesktopConditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "DesktopGroupName": {
+          "type": "string"
+        },
+        "DesktopGroupUid": {
+          "type": "integer"
+        },
+        "DesktopKind": {
+          "$ref": "#/definitions/DesktopKindContract"
+        },
+        "DesktopUid": {
+          "type": "integer"
+        },
+        "DnsName": {
+          "type": "string"
+        },
+        "HostedMachineId": {
+          "type": "string"
+        },
+        "HostedMachineName": {
+          "type": "string"
+        },
+        "HostingServerName": {
+          "type": "string"
+        },
+        "HypervisorConnectionName": {
+          "type": "string"
+        },
+        "HypervisorConnectionUid": {
+          "type": "integer"
+        },
+        "HypervisorConnectionGuid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "IconUid": {
+          "type": "integer"
+        },
+        "ImageOutOfDate": {
+          "type": "boolean"
+        },
+        "InMaintenanceMode": {
+          "type": "boolean"
+        },
+        "IPAddress": {
+          "type": "string"
+        },
+        "IsAssigned": {
+          "type": "boolean"
+        },
+        "IsPhysical": {
+          "type": "boolean"
+        },
+        "LastConnectionTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastConnectionUser": {
+          "type": "string"
+        },
+        "LastDeregistrationReason": {
+          "$ref": "#/definitions/DeregistrationReasonContract"
+        },
+        "LastDeregistrationTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastPvDErrorReason": {
+          "type": "string"
+        },
+        "LastPvDErrorTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastHostingUpdateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LaunchedViaHostName": {
+          "type": "string"
+        },
+        "LaunchedViaIP": {
+          "type": "string"
+        },
+        "LoadIndex": {
+          "type": "integer"
+        },
+        "MachineName": {
+          "type": "string"
+        },
+        "NetworkMappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkMappingModelContract"
+          }
+        },
+        "OSType": {
+          "type": "string"
+        },
+        "OSVersion": {
+          "type": "string"
+        },
+        "PersistUserChanges": {
+          "$ref": "#/definitions/PersistUserChangesContract"
+        },
+        "PowerActionPending": {
+          "type": "boolean"
+        },
+        "PowerState": {
+          "$ref": "#/definitions/DesktopPowerStateContract"
+        },
+        "Protocol": {
+          "type": "string"
+        },
+        "ProvisioningType": {
+          "$ref": "#/definitions/ProvisioningTypeContract"
+        },
+        "PublishedApplications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "PublishedName": {
+          "type": "string"
+        },
+        "PvdEstimatedCompletionTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PvdStage": {
+          "$ref": "#/definitions/PvdStageContract"
+        },
+        "PvdPercentDone": {
+          "type": "integer"
+        },
+        "RegistrationState": {
+          "$ref": "#/definitions/RegistrationStateContract"
+        },
+        "ScheduledReboot": {
+          "$ref": "#/definitions/ScheduledRebootContract"
+        },
+        "SecureIcaActive": {
+          "type": "boolean"
+        },
+        "SecureIcaRequired": {
+          "type": "boolean"
+        },
+        "SessionCount": {
+          "type": "integer"
+        },
+        "SessionType": {
+          "$ref": "#/definitions/SessionTypeContract"
+        },
+        "SessionState": {
+          "$ref": "#/definitions/DesktopSessionStateContract"
+        },
+        "SessionStateChangeTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AppState": {
+          "$ref": "#/definitions/DesktopSessionAppStateContract"
+        },
+        "SessionSupport": {
+          "$ref": "#/definitions/SessionSupportContract"
+        },
+        "SessionUserName": {
+          "type": "string"
+        },
+        "Sid": {
+          "type": "string"
+        },
+        "SmartAccessTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "StartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "SummaryState": {
+          "$ref": "#/definitions/DesktopSummaryStateContract"
+        },
+        "SupportsSuspend": {
+          "type": "boolean"
+        },
+        "SupportsResume": {
+          "type": "boolean"
+        },
+        "SupportsReset": {
+          "type": "boolean"
+        },
+        "SupportsRestart": {
+          "type": "boolean"
+        },
+        "SupportsShutdown": {
+          "type": "boolean"
+        },
+        "SupportsTurnOn": {
+          "type": "boolean"
+        },
+        "SupportsTurnOff": {
+          "type": "boolean"
+        },
+        "Tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Guid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Uid": {
+          "type": "integer"
+        },
+        "WillShutdownAfterUse": {
+          "type": "boolean"
+        },
+        "WindowsConnectionSetting": {
+          "$ref": "#/definitions/WindowsConnectionSettingContract"
+        },
+        "DesktopGroup": {
+          "$ref": "#/definitions/DesktopGroupModelContract"
+        },
+        "Catalog": {
+          "$ref": "#/definitions/MachineCatalogInDesktopGroupModelContract"
+        },
+        "IsReserved": {
+          "type": "boolean"
+        },
+        "ZoneUid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ZoneName": {
+          "type": "string"
+        },
+        "ScopeModels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScopeModelContract"
+          }
+        },
+        "SecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityGroupModelContract"
+          }
+        },
+        "ErrorState": {
+          "$ref": "#/definitions/MachineErrorStateContract"
+        },
+        "FaultState": {
+          "$ref": "#/definitions/FaultStateContract"
+        }
+      }
+    },
+    "ColorDepthContract": {
+      "type": "integer",
+      "x-typeName": "ColorDepthContract",
+      "x-enumNames": [
+        "Unknown",
+        "FourBit",
+        "EightBit",
+        "SixteenBit",
+        "TwentyFourBit"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "DeregistrationReasonContract": {
+      "type": "integer",
+      "x-typeName": "DeregistrationReasonContract",
+      "x-enumNames": [
+        "Unknown",
+        "AgentShutdown",
+        "AgentSuspended",
+        "AgentRequested",
+        "IncompatibleVersion",
+        "AgentAddressResolutionFailed",
+        "AgentNotContactable",
+        "AgentWrongActiveDirectoryOU",
+        "EmptyRegistrationRequest",
+        "MissingRegistrationCapabilities",
+        "MissingAgentVersion",
+        "InconsistentRegistrationCapabilities",
+        "NotLicensedForFeature",
+        "UnsupportedCredentialSecurityVersion",
+        "InvalidRegistrationRequest",
+        "SingleMultiSessionMismatch",
+        "FunctionalLevelTooLowForCatalog",
+        "FunctionalLevelTooLowForDesktopGroup",
+        "PowerOff",
+        "DesktopRestart",
+        "DesktopRemoved",
+        "AgentRejectedSettingsUpdate",
+        "SendSettingsFailure",
+        "SessionAuditFailure",
+        "SessionPrepareFailure",
+        "ContactLost",
+        "SettingsCreationFailure",
+        "UnknownError",
+        "BrokerRegistrationLimitReached",
+        "RegistrationStateMismatch"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "description": ""
+    },
+    "NetworkMappingModelContract": {
+      "type": "object",
+      "x-typeName": "NetworkMappingModelContract",
+      "additionalProperties": false,
+      "required": [
+        "IsCardEnabled"
+      ],
+      "properties": {
+        "DeviceId": {
+          "type": "string"
+        },
+        "DeviceName": {
+          "type": "string"
+        },
+        "Network": {
+          "$ref": "#/definitions/VirtualNetworkModelContract"
+        },
+        "IsCardEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "VirtualNetworkModelContract": {
+      "type": "object",
+      "x-typeName": "VirtualNetworkModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "NetworkId": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/HypervisorTreeItemModelContract"
+        }
+      ]
+    },
+    "HypervisorTreeItemModelContract": {
+      "type": "object",
+      "x-typeName": "HypervisorTreeItemModelContract",
+      "additionalProperties": false,
+      "required": [
+        "IsContainer",
+        "IsSymLink",
+        "IsMachine",
+        "IsSnapshotable"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "FullName": {
+          "type": "string"
+        },
+        "Path": {
+          "type": "string"
+        },
+        "RootPath": {
+          "type": "string"
+        },
+        "Parent": {
+          "$ref": "#/definitions/HypervisorTreeParentModelContract"
+        },
+        "IsContainer": {
+          "type": "boolean"
+        },
+        "IsSymLink": {
+          "type": "boolean"
+        },
+        "Id": {
+          "type": "string"
+        },
+        "IsMachine": {
+          "type": "boolean"
+        },
+        "IsSnapshotable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "HypervisorTreeParentModelContract": {
+      "type": "object",
+      "x-typeName": "HypervisorTreeParentModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "Path": {
+          "type": "string"
+        },
+        "RootPath": {
+          "type": "string"
+        }
+      }
+    },
+    "DesktopPowerStateContract": {
+      "type": "integer",
+      "x-typeName": "DesktopPowerStateContract",
+      "x-enumNames": [
+        "Unmanaged",
+        "Unknown",
+        "Unavailable",
+        "Off",
+        "On",
+        "Suspended",
+        "TurningOn",
+        "TurningOff",
+        "Suspending",
+        "Resuming",
+        "NotSupported"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "description": ""
+    },
+    "PvdStageContract": {
+      "type": "integer",
+      "x-typeName": "PvdStageContract",
+      "x-enumNames": [
+        "Unknown",
+        "Failed",
+        "None",
+        "Requested",
+        "Starting",
+        "Working"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": ""
+    },
+    "RegistrationStateContract": {
+      "type": "integer",
+      "x-typeName": "RegistrationStateContract",
+      "x-enumNames": [
+        "Unknown",
+        "Unregistered",
+        "Initializing",
+        "Registered",
+        "AgentError"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "ScheduledRebootContract": {
+      "type": "integer",
+      "x-typeName": "ScheduledRebootContract",
+      "x-enumNames": [
+        "Unknown",
+        "None",
+        "Pending",
+        "Draining",
+        "InProgress",
+        "Natural"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": ""
+    },
+    "WindowsConnectionSettingContract": {
+      "type": "integer",
+      "x-typeName": "WindowsConnectionSettingContract",
+      "x-enumNames": [
+        "Unknown",
+        "LogonEnabled",
+        "Draining",
+        "DrainingUntilRestart",
+        "LogonDisabled"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": ""
+    },
+    "DesktopGroupModelContract": {
+      "type": "object",
+      "x-typeName": "DesktopGroupModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "Uuid",
+        "InMaintenanceMode",
+        "DeliveryKind",
+        "DesktopKind",
+        "DesktopsFaulted",
+        "MinimumFunctionalLevel",
+        "TotalApplications",
+        "TotalDesktops",
+        "DesktopsAvailable",
+        "DesktopsUnregistered",
+        "SessionCount",
+        "DesktopsDisconnected",
+        "SessionSupport",
+        "IsRemotePC",
+        "HasBeenPromoted",
+        "HasBeenPromotedFrom",
+        "CloudWorkspaceManaged",
+        "AppDNAState",
+        "Enabled",
+        "RequireUserHomeZone",
+        "IsBroken",
+        "AppEntitlementPolicyRuleIncludedUserFilterDisabled",
+        "AppEntitlementPolicyRuleDisabled",
+        "AccessPolicyRulesDoNotAllowRestart",
+        "AccessPolicyRulesAllowedUsers",
+        "ViaAGPolicyRuleDisabled",
+        "NotViaAGPolicyRuleDisabled",
+        "ViaAGPolicyRuleIncludedSmartAccessFilterDisabled",
+        "AccessPolicyRulesIncludedUserFilterDisabled"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "integer"
+        },
+        "Uuid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "InMaintenanceMode": {
+          "type": "boolean"
+        },
+        "DeliveryKind": {
+          "$ref": "#/definitions/DeliveryKindContract"
+        },
+        "DesktopKind": {
+          "$ref": "#/definitions/DesktopKindContract"
+        },
+        "DesktopsFaulted": {
+          "type": "integer"
+        },
+        "MinimumFunctionalLevel": {
+          "$ref": "#/definitions/FunctionalLevelModelContract"
+        },
+        "TotalApplications": {
+          "type": "integer"
+        },
+        "TotalDesktops": {
+          "type": "integer"
+        },
+        "DesktopsAvailable": {
+          "type": "integer"
+        },
+        "DesktopsUnregistered": {
+          "type": "integer"
+        },
+        "SessionCount": {
+          "type": "integer"
+        },
+        "DesktopsDisconnected": {
+          "type": "integer"
+        },
+        "SessionSupport": {
+          "$ref": "#/definitions/SessionSupportContract"
+        },
+        "IsRemotePC": {
+          "type": "boolean"
+        },
+        "HasBeenPromoted": {
+          "type": "boolean"
+        },
+        "HasBeenPromotedFrom": {
+          "$ref": "#/definitions/FunctionalLevelModelContract"
+        },
+        "CloudWorkspaceManaged": {
+          "type": "boolean"
+        },
+        "Delivering": {
+          "$ref": "#/definitions/DeliveredItemTypesContract"
+        },
+        "AppDNAState": {
+          "$ref": "#/definitions/AppDNAStateContract"
+        },
+        "AppDisks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "guid"
+          }
+        },
+        "Scopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScopeModelContract"
+          }
+        },
+        "TenantId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "RequireUserHomeZone": {
+          "type": "boolean"
+        },
+        "IsBroken": {
+          "type": "boolean"
+        },
+        "CatalogName": {
+          "type": "string"
+        },
+        "ScopeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AppEntitlementPolicyRuleIncludedUserFilterDisabled": {
+          "type": "boolean"
+        },
+        "AppEntitlementPolicyRuleIncludedUsers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AppEntitlementPolicyRuleDisabled": {
+          "type": "boolean"
+        },
+        "AccessPolicyRulesDoNotAllowRestart": {
+          "type": "boolean"
+        },
+        "AccessPolicyRulesProtocols": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AccessPolicyRulesAllowedUsers": {
+          "$ref": "#/definitions/AllowedUserContract"
+        },
+        "ViaAGPolicyRuleDisabled": {
+          "type": "boolean"
+        },
+        "NotViaAGPolicyRuleDisabled": {
+          "type": "boolean"
+        },
+        "ViaAGPolicyRuleIncludedSmartAccessFilterDisabled": {
+          "type": "boolean"
+        },
+        "ViaAGPolicyRuleIncludedSmartAccessTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AccessPolicyRulesIncludedUserFilterDisabled": {
+          "type": "boolean"
+        },
+        "AccessPolicyRulesIncludedUsers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DeliveryKindContract": {
+      "type": "integer",
+      "x-typeName": "DeliveryKindContract",
+      "x-enumNames": [
+        "Unknown",
+        "DesktopsOnly",
+        "DesktopsAndApps",
+        "AppsOnly"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "description": ""
+    },
+    "DeliveredItemTypesContract": {
+      "type": "integer",
+      "x-typeName": "DeliveredItemTypesContract",
+      "x-enumNames": [
+        "None",
+        "Apps",
+        "Desktops",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "description": ""
+    },
+    "AppDNAStateContract": {
+      "type": "integer",
+      "x-typeName": "AppDNAStateContract",
+      "x-enumNames": [
+        "Unknown",
+        "Unsupported",
+        "Importing",
+        "Capturing",
+        "Analyzing",
+        "Error",
+        "Compatible",
+        "ProblemsDetected"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "description": ""
+    },
+    "AllowedUserContract": {
+      "type": "integer",
+      "x-typeName": "AllowedUserContract",
+      "x-enumNames": [
+        "Unknown",
+        "Filtered",
+        "AnyAuthenticated",
+        "Any",
+        "AnonymousOnly",
+        "FilteredOrAnonymous"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": ""
+    },
+    "MachineCatalogInDesktopGroupModelContract": {
+      "type": "object",
+      "x-typeName": "MachineCatalogInDesktopGroupModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "Guid",
+        "AvailableCount",
+        "UsedCount",
+        "AllocationType",
+        "SessionSupport",
+        "ProvisioningType",
+        "MachineType",
+        "RemotePC"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "integer"
+        },
+        "Guid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "AvailableCount": {
+          "type": "integer"
+        },
+        "UsedCount": {
+          "type": "integer"
+        },
+        "AllocationType": {
+          "$ref": "#/definitions/AllocationTypeContract"
+        },
+        "SessionSupport": {
+          "$ref": "#/definitions/SessionSupportContract"
+        },
+        "PersistChanges": {
+          "$ref": "#/definitions/PersistUserChangesContract"
+        },
+        "ProvisioningType": {
+          "$ref": "#/definitions/ProvisioningTypeContract"
+        },
+        "MachineType": {
+          "$ref": "#/definitions/MachineTypeContract"
+        },
+        "RemotePC": {
+          "type": "boolean"
+        },
+        "ScopeIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      }
+    },
+    "SecurityGroupModelContract": {
+      "type": "object",
+      "x-typeName": "SecurityGroupModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "type": "string"
+        },
+        "EgressRules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityGroupRuleModelContract"
+          }
+        },
+        "IngressRules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityGroupRuleModelContract"
+          }
+        },
+        "VirtualPrivateCloudId": {
+          "type": "string"
+        }
+      }
+    },
+    "SecurityGroupRuleModelContract": {
+      "type": "object",
+      "x-typeName": "SecurityGroupRuleModelContract",
+      "additionalProperties": false,
+      "required": [
+        "FromPort",
+        "ToPort"
+      ],
+      "properties": {
+        "FromPort": {
+          "type": "integer"
+        },
+        "SecurityGroupIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "IPRanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Protocol": {
+          "type": "string"
+        },
+        "ToPort": {
+          "type": "integer"
+        }
+      }
+    },
+    "MachineErrorStateContract": {
+      "type": "integer",
+      "x-typeName": "MachineErrorStateContract",
+      "x-enumNames": [
+        "NoError",
+        "NoProvisionedVirtualMachine",
+        "UnknownError",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "description": ""
+    },
+    "FaultStateContract": {
+      "type": "integer",
+      "x-typeName": "FaultStateContract",
+      "x-enumNames": [
+        "Unknown",
+        "None",
+        "FailedToStart",
+        "StuckOnBoot",
+        "Unregistered",
+        "MaxCapacity"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": ""
+    },
+    "DeploymentCapabilitiesContract": {
+      "type": "object",
+      "x-typeName": "DeploymentCapabilitiesContract",
+      "additionalProperties": false,
+      "required": [
+        "IsCloudDeployment",
+        "ExportFeatureTable",
+        "ControllerVersioning",
+        "MachinePowerAction",
+        "PerControllerLicensingStatus",
+        "BurnInDateAsString",
+        "LicenseServerUri",
+        "AdminFolderSupport",
+        "ApplicationLimits",
+        "FastApplicationAccess",
+        "AnonymousSessions",
+        "CeipAnalytics",
+        "SupportsPvdAbsolutePowerActions",
+        "AppDiskSupport",
+        "AppDNASupport",
+        "FunctionalLevelMax",
+        "LogServicePropertyFiltering",
+        "ApplicationGroups",
+        "AppVPerApplicationMachineConfiguration",
+        "MachineTagging",
+        "ApplicationTagging",
+        "BrokerTagUsage",
+        "AppVSingleAdminSupport",
+        "AppVSingleAdminIsolationGroupsSupport",
+        "Zones",
+        "AnyViaAGSetting",
+        "TagDescriptions",
+        "MultipleRebootWarnings",
+        "ReservedBrokerMachines",
+        "ExplicitPreferredController",
+        "TemporaryStorage",
+        "WriteBackCache",
+        "ZonePreference",
+        "RegistrationErrors",
+        "AzureRMPlugin",
+        "AzureClassicPlugin",
+        "ConfigurationLogging",
+        "CustomRoles",
+        "SingleSessionDesktops",
+        "MultisessionDesktops",
+        "SingleSessionApplications",
+        "MultisessionApplications",
+        "RemotePC",
+        "HistoricalMonitorData",
+        "CloudHostedMachines",
+        "WebStudioAuthAndDelegatedAdmin",
+        "DisableSetGateway"
+      ],
+      "properties": {
+        "IsCloudDeployment": {
+          "type": "boolean"
+        },
+        "ExportFeatureTable": {
+          "type": "boolean"
+        },
+        "ControllerVersioning": {
+          "type": "boolean"
+        },
+        "MachinePowerAction": {
+          "type": "boolean"
+        },
+        "PerControllerLicensingStatus": {
+          "type": "boolean"
+        },
+        "BurnInDateAsString": {
+          "type": "boolean"
+        },
+        "LicenseServerUri": {
+          "type": "boolean"
+        },
+        "AdminFolderSupport": {
+          "type": "boolean"
+        },
+        "ApplicationLimits": {
+          "type": "boolean"
+        },
+        "FastApplicationAccess": {
+          "type": "boolean"
+        },
+        "AnonymousSessions": {
+          "type": "boolean"
+        },
+        "CeipAnalytics": {
+          "type": "boolean"
+        },
+        "SupportsPvdAbsolutePowerActions": {
+          "type": "boolean"
+        },
+        "AppDiskSupport": {
+          "type": "boolean"
+        },
+        "AppDNASupport": {
+          "type": "boolean"
+        },
+        "FunctionalLevelMax": {
+          "$ref": "#/definitions/FunctionalLevelModelContract"
+        },
+        "LogServicePropertyFiltering": {
+          "type": "boolean"
+        },
+        "ApplicationGroups": {
+          "type": "boolean"
+        },
+        "AppVPerApplicationMachineConfiguration": {
+          "type": "boolean"
+        },
+        "MachineTagging": {
+          "type": "boolean"
+        },
+        "ApplicationTagging": {
+          "type": "boolean"
+        },
+        "BrokerTagUsage": {
+          "type": "boolean"
+        },
+        "AppVSingleAdminSupport": {
+          "type": "boolean"
+        },
+        "AppVSingleAdminIsolationGroupsSupport": {
+          "type": "boolean"
+        },
+        "Zones": {
+          "type": "boolean"
+        },
+        "AnyViaAGSetting": {
+          "type": "boolean"
+        },
+        "TagDescriptions": {
+          "type": "boolean"
+        },
+        "MultipleRebootWarnings": {
+          "type": "boolean"
+        },
+        "ReservedBrokerMachines": {
+          "type": "boolean"
+        },
+        "ExplicitPreferredController": {
+          "type": "boolean"
+        },
+        "TemporaryStorage": {
+          "type": "boolean"
+        },
+        "WriteBackCache": {
+          "type": "boolean"
+        },
+        "ZonePreference": {
+          "type": "boolean"
+        },
+        "RegistrationErrors": {
+          "type": "boolean"
+        },
+        "AzureRMPlugin": {
+          "type": "boolean"
+        },
+        "AzureClassicPlugin": {
+          "type": "boolean"
+        },
+        "ConfigurationLogging": {
+          "type": "boolean"
+        },
+        "CustomRoles": {
+          "type": "boolean"
+        },
+        "SingleSessionDesktops": {
+          "type": "boolean"
+        },
+        "MultisessionDesktops": {
+          "type": "boolean"
+        },
+        "SingleSessionApplications": {
+          "type": "boolean"
+        },
+        "MultisessionApplications": {
+          "type": "boolean"
+        },
+        "RemotePC": {
+          "type": "boolean"
+        },
+        "HistoricalMonitorData": {
+          "type": "boolean"
+        },
+        "CloudHostedMachines": {
+          "type": "boolean"
+        },
+        "WebStudioAuthAndDelegatedAdmin": {
+          "type": "boolean"
+        },
+        "DisableSetGateway": {
+          "type": "boolean"
+        }
+      }
+    },
+    "StoreFrontModelContract": {
+      "type": "object",
+      "x-typeName": "StoreFrontModelContract",
+      "additionalProperties": false,
+      "required": [
+        "DesktopGroupRefCount",
+        "Uid"
+      ],
+      "properties": {
+        "StorefrontUrl": {
+          "type": "string"
+        },
+        "DesktopGroupRefCount": {
+          "type": "integer"
+        },
+        "DesktopGroupUids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "Uid": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "BlobName": {
+          "type": "string"
+        }
+      }
+    },
+    "DesktopGroupDetailsContract": {
+      "type": "object",
+      "x-typeName": "DesktopGroupDetailsContract",
+      "additionalProperties": false,
+      "required": [
+        "TotalMachines",
+        "UnregisteredMachines",
+        "RegisteredMachines",
+        "DesktopsFaulted",
+        "OffMachines",
+        "MachinesInMaintenanceMode"
+      ],
+      "properties": {
+        "DesktopGroupModel": {
+          "$ref": "#/definitions/DesktopGroupModelContract"
+        },
+        "TotalMachines": {
+          "type": "integer"
+        },
+        "UnregisteredMachines": {
+          "type": "integer"
+        },
+        "RegisteredMachines": {
+          "type": "integer"
+        },
+        "DesktopsFaulted": {
+          "type": "integer"
+        },
+        "OffMachines": {
+          "type": "integer"
+        },
+        "MachineOperatingSystems": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "VdaVersions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer"
+          }
+        },
+        "MachinesInMaintenanceMode": {
+          "type": "integer"
+        },
+        "Storefronts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AccessPolicies": {
+          "$ref": "#/definitions/SimplifiedAccessPolicyModelContract"
+        },
+        "PrelaunchSettings": {
+          "$ref": "#/definitions/FastApplicationAccessSettingsModelContract"
+        },
+        "LingerSetting": {
+          "$ref": "#/definitions/FastApplicationAccessSettingsModelContract"
+        }
+      }
+    },
+    "SimplifiedAccessPolicyModelContract": {
+      "type": "object",
+      "x-typeName": "SimplifiedAccessPolicyModelContract",
+      "additionalProperties": false,
+      "required": [
+        "ConnectNotViaAccessGatewayAllowed",
+        "ConnectViaAccessGatewayAllowed",
+        "AccessGatewayConnectionsUseFilters",
+        "AllowsHdxAccess",
+        "AllowsRdpAccess",
+        "AllowMachineRestart",
+        "AllowedUsers"
+      ],
+      "properties": {
+        "SmartAccessTags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SmartAccessTagModelContract"
+          }
+        },
+        "IncludedUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ADAccountModelContract"
+          }
+        },
+        "ConnectNotViaAccessGatewayAllowed": {
+          "type": "boolean"
+        },
+        "ConnectViaAccessGatewayAllowed": {
+          "type": "boolean"
+        },
+        "AccessGatewayConnectionsUseFilters": {
+          "type": "boolean"
+        },
+        "AllowsHdxAccess": {
+          "type": "boolean"
+        },
+        "AllowsRdpAccess": {
+          "type": "boolean"
+        },
+        "AllowMachineRestart": {
+          "type": "boolean"
+        },
+        "AllowedUsers": {
+          "$ref": "#/definitions/AllowedUserContract"
+        }
+      }
+    },
+    "SmartAccessTagModelContract": {
+      "type": "object",
+      "x-typeName": "SmartAccessTagModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "Tag": {
+          "type": "string"
+        }
+      }
+    },
+    "FastApplicationAccessSettingsModelContract": {
+      "type": "object",
+      "x-typeName": "FastApplicationAccessSettingsModelContract",
+      "additionalProperties": false,
+      "required": [
+        "MaxTimeBeforeDisconnect",
+        "MaxTimeBeforeTerminate",
+        "MaxAverageLoadThreshold",
+        "MaxPerDesktopLoadThreshold",
+        "UserFilterEnabled",
+        "Enabled"
+      ],
+      "properties": {
+        "MaxTimeBeforeDisconnect": {
+          "type": "string",
+          "format": "time-span"
+        },
+        "MaxTimeBeforeTerminate": {
+          "type": "string",
+          "format": "time-span"
+        },
+        "MaxAverageLoadThreshold": {
+          "type": "integer"
+        },
+        "MaxPerDesktopLoadThreshold": {
+          "type": "integer"
+        },
+        "UserFilterEnabled": {
+          "type": "boolean"
+        },
+        "Users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ADAccountModelContract"
+          }
+        },
+        "Enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PartialMachineModelContract": {
+      "type": "object",
+      "x-typeName": "PartialMachineModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "AssociatedUserNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "MachineName": {
+          "type": "string"
+        }
+      }
+    },
+    "DesktopModelContract": {
+      "type": "object",
+      "x-typeName": "DesktopModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Uid",
+        "Guid",
+        "DesktopGroupUid",
+        "UserFilterEnabled",
+        "Enabled",
+        "NumberOfTagRestrictedMachines"
+      ],
+      "properties": {
+        "Uid": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Guid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "PublishedName": {
+          "type": "string"
+        },
+        "DesktopGroupUid": {
+          "type": "integer"
+        },
+        "DesktopGroupName": {
+          "type": "string"
+        },
+        "IconUid": {
+          "type": "integer"
+        },
+        "UserFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ADAccountModelContract"
+          }
+        },
+        "UserFilterEnabled": {
+          "type": "boolean"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "DesktopsPerUser": {
+          "type": "integer"
+        },
+        "RestrictToTag": {
+          "type": "string"
+        },
+        "NumberOfTagRestrictedMachines": {
+          "type": "integer"
+        }
+      }
+    },
+    "DeliveryGroupTagContract": {
+      "type": "object",
+      "x-typeName": "DeliveryGroupTagContract",
+      "additionalProperties": false,
+      "required": [
+        "MachineCount",
+        "AppliedToDeliveryGroup"
+      ],
+      "properties": {
+        "TagModel": {
+          "$ref": "#/definitions/TagModelContract"
+        },
+        "MachineCount": {
+          "type": "integer"
+        },
+        "AppliedToDeliveryGroup": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DesktopUsageContract": {
+      "type": "object",
+      "x-typeName": "DesktopUsageContract",
+      "additionalProperties": false,
+      "properties": {
+        "Usage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DesktopUsageModelContract"
+          }
+        },
+        "PowerTimeSchemes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PowerTimeSchemeModelContract"
+          }
+        }
+      }
+    },
+    "DesktopUsageModelContract": {
+      "type": "object",
+      "x-typeName": "DesktopUsageModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Time",
+        "Usage",
+        "DesktopGroupId"
+      ],
+      "properties": {
+        "Time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Usage": {
+          "type": "integer"
+        },
+        "DesktopGroupId": {
+          "type": "integer"
+        }
+      }
+    },
+    "PowerTimeSchemeModelContract": {
+      "type": "object",
+      "x-typeName": "PowerTimeSchemeModelContract",
+      "additionalProperties": false,
+      "required": [
+        "DaysOfWeek",
+        "DesktopGroupUid",
+        "PoolUsingPercentage",
+        "Uid"
+      ],
+      "properties": {
+        "DaysOfWeek": {
+          "$ref": "#/definitions/TimeSchemeDaysContract"
+        },
+        "DesktopGroupUid": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "PeakHours": {
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "PoolSize": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "PoolUsingPercentage": {
+          "type": "boolean"
+        },
+        "Uid": {
+          "type": "integer"
+        }
+      }
+    },
+    "TimeSchemeDaysContract": {
+      "type": "integer",
+      "x-typeName": "TimeSchemeDaysContract",
+      "x-enumNames": [
+        "None",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Weekdays",
+        "Saturday",
+        "Weekend",
+        "Unknown"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        62,
+        64,
+        65,
+        128
+      ],
+      "description": ""
+    },
+    "AppDiskModelContract": {
+      "type": "object",
+      "x-typeName": "AppDiskModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "HostingUnitId",
+        "HypervisorConnectionId",
+        "State",
+        "AppDNAState",
+        "IsActive",
+        "NewVersionCreationInProgress"
+      ],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        },
+        "HostingUnitId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "HostingUnitName": {
+          "type": "string"
+        },
+        "HypervisorConnectionId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "HypervisorConnectionName": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "State": {
+          "$ref": "#/definitions/AppDiskStateContract"
+        },
+        "AppDNAState": {
+          "$ref": "#/definitions/AppDNAStateContract"
+        },
+        "TaskProgress": {
+          "type": "number",
+          "format": "double"
+        },
+        "PreparationMachineSid": {
+          "type": "string"
+        },
+        "AppDiskErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppDiskErrorModelContract"
+          }
+        },
+        "InstalledPackages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppDiskInstalledPackageModelContract"
+          }
+        },
+        "ScopeIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "guid"
+          }
+        },
+        "IsActive": {
+          "type": "boolean"
+        },
+        "NewVersionCreationInProgress": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AppDiskStateContract": {
+      "type": "integer",
+      "x-typeName": "AppDiskStateContract",
+      "x-enumNames": [
+        "None",
+        "Unsupported",
+        "Unknown",
+        "Importing",
+        "Creating",
+        "Cloning",
+        "Populating",
+        "Sealing",
+        "Error",
+        "Ready",
+        "Deleting"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "description": ""
+    },
+    "AppDiskErrorModelContract": {
+      "type": "object",
+      "x-typeName": "AppDiskErrorModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "DisplayErrorMessage": {
+          "type": "string"
+        },
+        "ErrorMessage": {
+          "type": "string"
+        },
+        "Operation": {
+          "type": "string"
+        },
+        "ErrorData": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ErrorId": {
+          "type": "string"
+        },
+        "ErrorIdString": {
+          "type": "string"
+        }
+      }
+    },
+    "AppDiskInstalledPackageModelContract": {
+      "type": "object",
+      "x-typeName": "AppDiskInstalledPackageModelContract",
+      "additionalProperties": false,
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Publisher": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationGroupModelContract": {
+      "type": "object",
+      "x-typeName": "ApplicationGroupModelContract",
+      "additionalProperties": false,
+      "required": [
+        "Enabled",
+        "SessionSharingEnabled",
+        "Uid",
+        "UserFilterEnabled",
+        "Uuid",
+        "ApplicationCount",
+        "TotalMachines"
+      ],
+      "properties": {
+        "AssociatedDesktopGroupPriorities": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "AssociatedDesktopGroupUids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "AssociatedDesktopGroupUuids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "guid"
+          }
+        },
+        "AssociatedUsers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ADAccountModelContract"
+          }
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Enabled": {
+          "type": "boolean"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "SessionSharingEnabled": {
+          "type": "boolean"
+        },
+        "Tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Uid": {
+          "type": "integer"
+        },
+        "UserFilterEnabled": {
+          "type": "boolean"
+        },
+        "Uuid": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ApplicationCount": {
+          "type": "integer"
+        },
+        "AssociatedDesktopGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DesktopGroupModelContract"
+          }
+        },
+        "RestrictToTag": {
+          "type": "string"
+        },
+        "TotalMachines": {
+          "type": "integer"
+        },
+        "DesktopGroupPriorities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DesktopGroupPriorityContract"
+          }
+        },
+        "ScopeIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "guid"
+          }
+        },
+        "TenantId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ScopeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AssociatedDesktopGroupNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "AssociatedUserSids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DesktopGroupPriorityContract": {
+      "type": "object",
+      "x-typeName": "DesktopGroupPriorityContract",
+      "additionalProperties": false,
+      "required": [
+        "Priority",
+        "DesktopGroupUid"
+      ],
+      "properties": {
+        "DesktopGroupName": {
+          "type": "string"
+        },
+        "Priority": {
+          "type": "integer"
+        },
+        "DesktopGroupUid": {
+          "type": "integer"
+        }
+      }
+    },
+    "ZoneModelContract": {
+      "type": "object",
+      "x-typeName": "ZoneModelContract",
+      "additionalProperties": false,
+      "required": [
+        "ZoneId",
+        "IsPrimary"
+      ],
+      "properties": {
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ExternalId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "IsPrimary": {
+          "type": "boolean"
+        },
+        "ResourceLocationId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "VirtualSiteId": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "ZonableItemModelContract": {
+      "type": "object",
+      "x-typeName": "ZonableItemModelContract",
+      "additionalProperties": false,
+      "required": [
+        "ZonableItemType"
+      ],
+      "properties": {
+        "ZonableItemName": {
+          "type": "string"
+        },
+        "ZonableItemDescription": {
+          "type": "string"
+        },
+        "ZonableItemType": {
+          "$ref": "#/definitions/ZonableItemTypeContract"
+        },
+        "ZoneId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "ZoneName": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {},
+  "securityDefinitions": {}
+}

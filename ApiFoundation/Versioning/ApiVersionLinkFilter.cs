@@ -10,7 +10,7 @@ namespace ApiFoundation.Versioning
     {
         private static Regex _maxVersionRex = new Regex(@":maxversion\((\d\d\d\d-\d\d-\d\d)\)", RegexOptions.Compiled);
 
-        public static bool CheckLink(Link link, HttpContext context)
+        public static bool CheckLink(ref Link link, HttpContext context)
         {
             // If a link has a maxversion, see if the caller has access to it; skip otherwise
             var match = _maxVersionRex.Match(link.Href);
@@ -25,7 +25,7 @@ namespace ApiFoundation.Versioning
                     return false;
 
                 // cut the maxversion out
-                link.Href = MatchReplace(link.Href, match, "");
+                link = link.WithHref(href => MatchReplace(href, match, ""));
             }
             return true;
         }
