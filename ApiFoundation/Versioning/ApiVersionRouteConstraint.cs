@@ -6,7 +6,7 @@ using Microsoft.Extensions.Primitives;
 
 namespace ApiFoundation.Versioning
 {
-    public class ApiVersionRouteConstraint : IRouteConstraint
+    internal class ApiVersionRouteConstraint : IRouteConstraint
     {
         public ApiVersionRouteConstraint(string maxVersion)
         {

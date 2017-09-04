@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace ApiFoundation.Versioning
 {
-    public static class ApiVersionLinkFilter
+    internal static class ApiVersionLinkFilter
     {
         private static Regex _maxVersionRex = new Regex(@":maxversion\((\d\d\d\d-\d\d-\d\d)\)", RegexOptions.Compiled);
 

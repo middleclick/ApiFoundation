@@ -7,26 +7,38 @@ using Microsoft.Extensions.Caching.Distributed;
 
 namespace ApiFoundation.Controllers
 {
+    /// <summary>
+    /// Controller for /v1/Hello/... routes
+    /// </summary>
     [Route("[controller]")]
     [ApiVersion("2017-08-01")]
     public class HelloController : CommonController
     {
         private readonly IDistributedCache _cache;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
         public HelloController(IDistributedCache cache)
         {
             _cache = cache;
         }
 
-        // GET /v1/{customer}/hello
+        /// <summary>
+        /// Welcomes the caller to our API.
+        /// </summary>
         [HttpGet]
         public HelloResult Get()
         {
-            return new HelloResult { Response = "Hello nobody" };
+            return new HelloResult { Response = $"Hello {HttpContext.User.Identity.Name}" };
         }
 
-        // GET /v1/{customer}/hello/5
-        // This API was retired on 2017-08-31 and the return value changed.
+        /// <summary>
+        /// Welcomes the caller to our API, by the name they passed in.
+        /// </summary>
+        /// <param name="id">Name of the person calling</param>
+        /// <returns>A welcome message</returns>
+        /// <remarks>This API was retired on 2017-08-31 and the return value changed.</remarks>
         [HttpGet("{id:maxversion(2017-08-31)}")]
         [ApiVersion("2017-08-22")]
         [ApiExplorerSettings(IgnoreApi = true)] // necessary to prevent swagger exception
@@ -35,8 +47,18 @@ namespace ApiFoundation.Controllers
             return "hello " + id;
         }
 
-        // GET /v1/{customer}/values/5
-        // This API was introduced on 2017-09-01; notice it has a different return type than the previous version.
+        /// <summary>
+        /// Welcomes the caller to our API, by the name they passed in.
+        /// </summary>
+        /// <param name="id">Name of the person calling</param>
+        /// <param name="customer"></param>
+        /// <returns>A welcome message</returns>
+        /// <remarks>
+        /// If you are adapting code written prior to 2017-09-01, notice that the API
+        /// has a different return type than the previous version.  Whereas before the
+        /// method returned a simple string, now it returns an object with a property
+        /// "Response" which contains the greeting message.
+        /// </remarks>
         [HttpGet("{id}", Name = "Hello_Get_id")]
         [ApiVersion("2017-09-01")]
         public async Task<HelloResult> Get2(string id, string customer)
@@ -50,8 +72,14 @@ namespace ApiFoundation.Controllers
         }
     }
 
+    /// <summary>
+    /// A successful response from GET Hello
+    /// </summary>
     public class HelloResult : LinkedResponse
     {
+        /// <summary>
+        /// A welcoming message to the caller.
+        /// </summary>
         public string Response { get; set; }
     }
 }

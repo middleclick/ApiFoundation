@@ -5,7 +5,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ApiFoundation.Versioning
 {
-    public class ApiVersionOperationFilter : IOperationFilter
+    internal class ApiVersionOperationFilter : IOperationFilter
     {
         public void Apply(Operation operation, OperationFilterContext context)
         {

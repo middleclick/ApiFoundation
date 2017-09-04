@@ -1,5 +1,9 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
+using ApiFoundation;
+using ApiFoundation.Documentation;
 using ApiFoundation.MultiCustomer;
+using ApiFoundation.PluginFramework;
 using ApiFoundation.Rbac;
 using ApiFoundation.ResourceLinking;
 using ApiFoundation.Versioning;
@@ -14,48 +18,51 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace ApiFoundation
 {
-    public class Startup
+    internal class Startup
     {
         public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
+        public const string ApplicationName = "Citrix Cloud API";
+        public const string VersionPrefix = "v1";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var mvc = services.AddMvc(
-                opt => {
-                    opt.UseCentralRoutePrefix(new RouteAttribute("v1"));
-                    opt.Filters.Add(new ProducesAttribute("application/json"));
-                    opt.Filters.Add<LinkFilter>();
-                    opt.Filters.Add<CustomerActionFilter>();
-                })
-                .AddApplicationPart(Assembly.LoadFile(@"/Users/tomkludy/Projects/ApiFoundation/HelloWorld.Api/bin/Debug/netcoreapp2.0/HelloWorld.Api.dll"));
+            // Authentication
+            services.AddCcAuth();
 
-            services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                    c.OperationFilter<ApiVersionOperationFilter>();
-                });
+            // TODO: Authorization
 
-            services.Configure<RouteOptions>(options =>
-                options.ConstraintMap.Add("maxversion", typeof(ApiVersionRouteConstraint)));
-
-            services.AddAuthentication(CcBearerOptions.Scheme)
-                    .AddScheme<CcBearerOptions, CcBearerHandler>(CcBearerOptions.Scheme, options => {});
-
-            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //         .AddJwtBearer(options => {
-            //             //options.Audience = "";
-            //             options.Authority = "cws";
-            //         });
-            
-            // services.AddAuthorization(options => {
-                        
-            //         });
-
+            // Caching
             // This should be pointed to Redis
             services.AddDistributedMemoryCache();
+
+            // Routing
+            var mvc = services.AddMvc(
+                opt => {
+                    // Content negotiation
+                    opt.Filters.Add(new ProducesAttribute("application/json"));
+
+                    // Multi-customer
+                    opt.AddMultiCustomer();
+
+                    // Versioning.  Has to be added here and later.
+                    opt.AddVersioningRoute(VersionPrefix);
+
+                    // Linking (HATEOAS)
+                    opt.Filters.Add<LinkFilter>();
+                });
+            
+            // Versioning.  Has to be added after AddMvc.
+            services.AddVersioningConstraint();
+
+            // Plugin framework
+            var plugins = mvc.AddPlugins();
+
+            // Documentation
+            services.AddDocumentation(ApplicationName, VersionPrefix, plugins);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,13 +74,9 @@ namespace ApiFoundation
             }
 
             app.UseAuthentication();
-            app.UseSwagger();
+            app.AddAppDocumentation(ApplicationName, VersionPrefix);
 
-            app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                });
-
+            // Must be the the last thing in this method.
             app.UseMvc();
         }
     }

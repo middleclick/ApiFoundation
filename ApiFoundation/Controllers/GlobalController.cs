@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
-using ApiFoundation.Shared.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using ApiFoundation.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiFoundation.Controllers
 {
+    /// <summary>
+    /// Global routes that are handled by the framework rather than by plugins.
+    /// </summary>
     [Route("/v1")]
     public class GlobalController : CommonController
     {
-        // GET /v1
+        /// <summary>
+        /// Get the list of links available to the caller at the top level of the API.
+        /// </summary>
         [HttpGet]
         public LinkedResponse Get()
         {

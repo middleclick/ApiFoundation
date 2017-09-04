@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using ApiFoundation.Rbac;
 using ApiFoundation.Shared.Models;
+using ApiFoundation.Shared.Rbac;
 using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,6 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Internal;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ApiFoundation.ResourceLinking
 {
@@ -228,7 +226,7 @@ namespace ApiFoundation.ResourceLinking
             // Fill in related route information
             foreach (var route in routes)
             {
-                var routeLink = route.Link.Duplicate();
+                var routeLink = route.Link;
 
                 // We don't bother with "self" links.  They seem to be useless.
                 if (routeLink.Name == thisRouteName)
@@ -258,10 +256,7 @@ namespace ApiFoundation.ResourceLinking
                     {
                         foreach (var item in coll.GetItems())
                         {
-                            // Note that this should not modify the base route link,
-                            // but does modify the link object passed in (by ref)
-                            // so we need to copy it first
-                            var subLink = routeLink.Duplicate();
+                            var subLink = routeLink;
                             if (IsRouteAvailableToCaller(route, ref subLink, context.HttpContext, routeData, item))
                             {
                                 item.Links.Add(subLink);

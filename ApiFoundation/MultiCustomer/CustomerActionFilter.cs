@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ApiFoundation.MultiCustomer
 {
-    public class CustomerActionFilter : IActionFilter
+    internal class CustomerActionFilter : IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {
@@ -21,6 +21,7 @@ namespace ApiFoundation.MultiCustomer
             var customersClaim = caller.FindFirst("customers");
             if (customersClaim == null)
             {
+                // There is no customers claim
                 context.Result = new UnauthorizedResult();
                 return;
             }
@@ -32,6 +33,7 @@ namespace ApiFoundation.MultiCustomer
             }
             catch
             {
+                // Customers claim is in the wrong format
                 context.Result = new UnauthorizedResult();
                 return;
             }
@@ -71,6 +73,9 @@ namespace ApiFoundation.MultiCustomer
                 customer = customers[0];
             }
 
+            // Set the customer context for the method.  Note that this may override
+            // the customer parameter passed in; this is desirable to resolve casing
+            // conflicts (i.e. caller passes "ACME" but system recognizes "acme").
             context.ActionArguments["customer"] = customer;
         }
     }

@@ -2,9 +2,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Routing;
 
-namespace ApiFoundation.MultiCustomer
+namespace ApiFoundation.Versioning
 {
-    public class RouteConvention : IApplicationModelConvention
+    internal class RouteConvention : IApplicationModelConvention
     {
         private readonly AttributeRouteModel _centralPrefix;
 
