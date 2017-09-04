@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 
-namespace ApiFoundation
+namespace ApiFoundation.MultiCustomer
 {
     public static class MvcOptionsExtensions
     {

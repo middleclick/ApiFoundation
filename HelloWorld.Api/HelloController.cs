@@ -9,7 +9,7 @@ namespace ApiFoundation.Controllers
 {
     [Route("[controller]")]
     [ApiVersion("2017-08-01")]
-    public class HelloController : Controller
+    public class HelloController : CommonController
     {
         private readonly IDistributedCache _cache;
 

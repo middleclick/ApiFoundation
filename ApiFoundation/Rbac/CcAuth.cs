@@ -8,17 +8,18 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace ApiFoundation.Rbac
 {
     public class CcBearerOptions : AuthenticationSchemeOptions
     {
-        public const string Scheme = "CcBearer";
+        public const string Scheme = "CWSAuth";
     }
 
     public class CcBearerHandler : AuthenticationHandler<CcBearerOptions>
     {
-        protected CcBearerHandler(IOptionsMonitor<CcBearerOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
+        public CcBearerHandler(IOptionsMonitor<CcBearerOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
             : base(options, logger, encoder, clock)
         {
         }
@@ -56,6 +57,7 @@ namespace ApiFoundation.Rbac
                 new Claim("sub", "fakesub"),
                 new Claim("name", "fake identity"),
                 new Claim("email", "fake.email@email.com"),
+                new Claim("customers", JsonConvert.SerializeObject(token.Split(','))),
             });
 
             // TODO - we could (if we wanted to) get all of the roles

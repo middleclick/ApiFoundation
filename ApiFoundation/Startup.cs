@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using ApiFoundation.MultiCustomer;
+using ApiFoundation.Rbac;
 using ApiFoundation.ResourceLinking;
 using ApiFoundation.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -23,9 +25,10 @@ namespace ApiFoundation
         {
             var mvc = services.AddMvc(
                 opt => {
-                    opt.UseCentralRoutePrefix(new RouteAttribute("v1/{customer}"));
+                    opt.UseCentralRoutePrefix(new RouteAttribute("v1"));
                     opt.Filters.Add(new ProducesAttribute("application/json"));
                     opt.Filters.Add<LinkFilter>();
+                    opt.Filters.Add<CustomerActionFilter>();
                 })
                 .AddApplicationPart(Assembly.LoadFile(@"/Users/tomkludy/Projects/ApiFoundation/HelloWorld.Api/bin/Debug/netcoreapp2.0/HelloWorld.Api.dll"));
 
@@ -37,6 +40,9 @@ namespace ApiFoundation
 
             services.Configure<RouteOptions>(options =>
                 options.ConstraintMap.Add("maxversion", typeof(ApiVersionRouteConstraint)));
+
+            services.AddAuthentication(CcBearerOptions.Scheme)
+                    .AddScheme<CcBearerOptions, CcBearerHandler>(CcBearerOptions.Scheme, options => {});
 
             // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             //         .AddJwtBearer(options => {
@@ -60,7 +66,6 @@ namespace ApiFoundation
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
             app.UseAuthentication();
             app.UseSwagger();
 
@@ -68,6 +73,8 @@ namespace ApiFoundation
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 });
+
+            app.UseMvc();
         }
     }
 }
