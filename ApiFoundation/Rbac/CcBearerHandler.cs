@@ -48,8 +48,8 @@ namespace ApiFoundation.Rbac
             var claimsIdentity = new ClaimsIdentity(fakeidentity, new [] {
                 // Identity claims, which come from the bearer token
                 new Claim("sub", "fakesub"),
-                new Claim("name", "fake identity"),
-                new Claim("email", "fake.email@email.com"),
+                new Claim(ClaimTypes.Name, "fake identity"),
+                new Claim(ClaimTypes.Email, "fake.email@email.com"),
                 new Claim("customers", JsonConvert.SerializeObject(token.Split(','))),
             });
 

@@ -28,9 +28,15 @@ namespace ApiFoundation.Controllers
         /// Welcomes the caller to our API.
         /// </summary>
         [HttpGet]
-        public HelloResult Get()
+        public HelloAllResult Get()
         {
-            return new HelloResult { Response = $"Hello {HttpContext.User.Identity.Name}" };
+            return new HelloAllResult {
+                Response = $"Hello {HttpContext.User.Identity.Name}",
+                Items = new [] {
+                    new PersonICanSayHelloTo { Id = "bob" },
+                    new PersonICanSayHelloTo { Id = "foo" }
+                }
+            };
         }
 
         /// <summary>
@@ -44,7 +50,7 @@ namespace ApiFoundation.Controllers
         [ApiExplorerSettings(IgnoreApi = true)] // necessary to prevent swagger exception
         public string Get(int id)
         {
-            return "hello " + id;
+            return "Hello";
         }
 
         /// <summary>
@@ -70,6 +76,15 @@ namespace ApiFoundation.Controllers
             await _cache.SetStringAsync(id, DateTime.Now.ToShortTimeString());
             return new HelloResult { Response = $"Hello {id} from {customer}, nice to meet you" };            
         }
+
+        /// <summary>
+        /// Can the caller get it?  Only if it is foo.
+        /// </summary>
+        [NonAction]
+        public bool CanGet2(string id)
+        {
+            return id == "foo";
+        }
     }
 
     /// <summary>
@@ -81,5 +96,15 @@ namespace ApiFoundation.Controllers
         /// A welcoming message to the caller.
         /// </summary>
         public string Response { get; set; }
+    }
+
+    public class HelloAllResult : LinkedCollectionBase<PersonICanSayHelloTo>
+    {
+        public string Response { get; set; }
+    }
+
+    public class PersonICanSayHelloTo : LinkedResponse
+    {
+        public string Id { get; set; }
     }
 }

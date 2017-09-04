@@ -76,6 +76,7 @@ namespace ApiFoundation.MultiCustomer
             // Set the customer context for the method.  Note that this may override
             // the customer parameter passed in; this is desirable to resolve casing
             // conflicts (i.e. caller passes "ACME" but system recognizes "acme").
+            context.HttpContext.Items.Add("customer", customer);
             context.ActionArguments["customer"] = customer;
         }
     }
