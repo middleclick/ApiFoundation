@@ -40,6 +40,21 @@ namespace ApiFoundation.Controllers
         }
 
         /// <summary>
+        /// Create something.
+        /// </summary>
+        [HttpPost]
+        public HelloAllResult Create()
+        {
+            return new HelloAllResult {
+                Response = $"Hello {HttpContext.User.Identity.Name}",
+                Items = new [] {
+                    new PersonICanSayHelloTo { Id = "bob" },
+                    new PersonICanSayHelloTo { Id = "foo" }
+                }
+            };
+        }
+
+        /// <summary>
         /// Welcomes the caller to our API, by the name they passed in.
         /// </summary>
         /// <param name="id">Name of the person calling</param>

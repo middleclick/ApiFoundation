@@ -36,7 +36,7 @@ namespace ApiFoundation
             // TODO: Authorization
 
             // Caching
-            // This should be pointed to Redis
+            // TODO: This should be pointed to Redis
             services.AddDistributedMemoryCache();
 
             // Routing

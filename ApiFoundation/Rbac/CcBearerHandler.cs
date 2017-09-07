@@ -45,7 +45,7 @@ namespace ApiFoundation.Rbac
             // use either AuthenticationResult.Fail(); or...
 
             var fakeidentity = new CcIdentity("fake identity");
-            var claimsIdentity = new ClaimsIdentity(fakeidentity, new [] {
+            fakeidentity.AddClaims(new [] {
                 // Identity claims, which come from the bearer token
                 new Claim("sub", "fakesub"),
                 new Claim(ClaimTypes.Name, "fake identity"),
@@ -61,7 +61,7 @@ namespace ApiFoundation.Rbac
             // The alternative is to check rights on demand instead of
             // up-front.
 
-            var principal = new ClaimsPrincipal(claimsIdentity);
+            var principal = new ClaimsPrincipal(fakeidentity);
 
             return Task.FromResult(AuthenticateResult.Success(new AuthenticationTicket(principal, CcBearerOptions.Scheme)));
         }
